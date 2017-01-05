@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Images.xcassets">
+   </FileRef>
+   <Group
+      location = "group:Assets.xcassets"
+      name = "Assets.xcassets">
+      <Group
+         location = "group:App Images"
+         name = "App Images">
+         <Group
+            location = "group:AddPin.imageset"
+            name = "AddPin.imageset">
+            <FileRef
+               location = "group:AddPin@2x.png">
+            </FileRef>
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:alarm.imageset"
+            name = "alarm.imageset">
+            <FileRef
+               location = "group:alarm.png">
+            </FileRef>
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:calendar.imageset"
+            name = "calendar.imageset">
+            <FileRef
+               location = "group:calendar.png">
+            </FileRef>
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <Group
+            location = "group:CurrentLocation.imageset"
+            name = "CurrentLocation.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:CurrentLocation@2x.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:DeleteGeotification.imageset"
+            name = "DeleteGeotification.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:DeleteGeotification@2x.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:GPS.imageset"
+            name = "GPS.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:GPS.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:journal.imageset"
+            name = "journal.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:journal.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:nothing.imageset"
+            name = "nothing.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:nothing.png">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:AppIcon.appiconset"
+         name = "AppIcon.appiconset">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Calendar Images"
+         name = "Calendar Images">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <Group
+            location = "group:quitDayImage-Grey.imageset"
+            name = "quitDayImage-Grey.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:quitDayImage-Grey.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:quitDayImage.imageset"
+            name = "quitDayImage.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:quitDayImage.png">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:checkImage.imageset"
+         name = "checkImage.imageset">
+         <FileRef
+            location = "group:checkImage.png">
+         </FileRef>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:Contents.json">
+      </FileRef>
+      <Group
+         location = "group:Journal Images"
+         name = "Journal Images">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <Group
+            location = "group:smokingNo.imageset"
+            name = "smokingNo.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:smokingNo.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:smokingYes.imageset"
+            name = "smokingYes.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:smokingYes.png">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:tabImages"
+         name = "tabImages">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <Group
+            location = "group:tempAlarm.imageset"
+            name = "tempAlarm.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:tempAlarm.png">
+            </FileRef>
+            <FileRef
+               location = "group:tempAlarm@2x.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:tempCal.imageset"
+            name = "tempCal.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:tempCal.png">
+            </FileRef>
+            <FileRef
+               location = "group:tempCal@2x.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:tempHelp.imageset"
+            name = "tempHelp.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:tempHelp.png">
+            </FileRef>
+            <FileRef
+               location = "group:tempHelp@2x.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:tempJournal.imageset"
+            name = "tempJournal.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:tempJournal.png">
+            </FileRef>
+            <FileRef
+               location = "group:tempJournal@2x.png">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:TimerImages"
+         name = "TimerImages">
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <Group
+            location = "group:downArrow.imageset"
+            name = "downArrow.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:downArrow.png">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:upArrow.imageset"
+            name = "upArrow.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:upArrow.png">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:wolfImages"
+         name = "wolfImages">
+         <Group
+            location = "group:badWolfHead.imageset"
+            name = "badWolfHead.imageset">
+            <FileRef
+               location = "group:badWolfHead.jpg">
+            </FileRef>
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:Contents.json">
+         </FileRef>
+         <Group
+            location = "group:crazyWolfHead.imageset"
+            name = "crazyWolfHead.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:crazyWolfHead.jpg">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:goodWolf2.imageset"
+            name = "goodWolf2.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:goodWolf2.jpg">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:goodWolfHead.imageset"
+            name = "goodWolfHead.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:goodWolfHead.jpg">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:neutralWolf.imageset"
+            name = "neutralWolf.imageset">
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <FileRef
+               location = "group:neutralWolf.jpg">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:ProtoTwo.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>
