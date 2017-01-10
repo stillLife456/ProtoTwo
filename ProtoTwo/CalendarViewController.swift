@@ -31,6 +31,18 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     @IBOutlet weak var quitDayLabel: UILabel!
 
     @IBOutlet weak var quitDayTextField: UITextField!
+    
+    
+    //Images for cell
+    
+    let blankImage = ImageBank.sharedInstance.blankImage
+    let badWolfImage = ImageBank.sharedInstance.badWolfHead
+    let goodWolfImage = ImageBank.sharedInstance.goodWolfHead
+    
+    
+    let quitDayImage = ImageBank.sharedInstance.quitDayImage
+    let quitDayImageGrey = ImageBank.sharedInstance.quitDayImageGrey
+    let costBenImage = ImageBank.sharedInstance.costBen
 
     
     override func viewDidLoad() {
@@ -43,7 +55,8 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         self.calendarView.dataSource = self
        
         self.calendarView.delegate = self
-        self.calendarView.registerCellViewXib(fileName: "CellView")
+        //self.calendarView.registerCellViewXib(fileName: "CellView")
+        self.calendarView.registerCellViewXib(fileName: "CellGraphView")
         //self.calendarView.registerCellViewXib(fileName: "CalendarHeaderView")
         
         let tempDate = NSDate()
@@ -276,6 +289,69 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         }
        
     }
+    
+    func getCellInfo(cellState: CellState) -> (Int, Int, UIImage){
+    
+        var didSmoke = 0
+        var didNotSmoke = 0
+        var image = blankImage
+//        var title = ""
+//        var quitDayFlag = false
+        
+        for e in Journal.sharedInstance.journalArray {
+            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : passCellDate){
+                if e.didSmoke!{
+                    didSmoke += 1
+                }
+                if !e.didSmoke!{
+                    didNotSmoke += 1
+                }
+//                if e.title == "Former Quit Day"{
+//                    title = e.title!
+//                }
+//                if e.quitDayFlag{
+//                    quitDayFlag = true
+//                }
+            }
+       
+        }
+     
+        for e in Journal.sharedInstance.journalArray {
+            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : passCellDate){
+
+//                if didSmoke > didNotSmoke {
+//                    image = badWolfImage
+//                } else if didNotSmoke >= didSmoke { ////Something is wrong here.....
+//                    image = goodWolfImage
+//                }
+//        
+              
+        
+                if e.quitDayFlag {
+                    image = quitDayImage
+                }
+                if e.title == "Former Quit Day" {
+                    image = quitDayImageGrey
+                    
+                }
+            }
+        }
+        for item in AllCostBenefitSheets.sharedInstance.allSheetsArray{
+            if testCalendar.isDate(item.dateMade, inSameDayAsDate : cellState.date){
+                image = costBenImage
+                
+            }
+        }
+        
+     
+        
+            let returnTuple = (didSmoke, didNotSmoke, image)
+        
+        return returnTuple
+    
+    }
+    
+    
    
     
 
@@ -381,17 +457,37 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         return newDate!
     }
     
+    
+    
     func calendar(calendar: JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date: NSDate, cellState: CellState) {
         
-        (cell as! CellView).setupCellBeforeDisplay(cellState, date: date)
+        //Create a custom cell
+        let myCell = cell as! CellGraphView
+        
+        //maybe this is dumb
+        let cellInfo = getCellInfo(cellState)
+        
+        myCell.didSmokeCount = cellInfo.0
+        myCell.didNotSmokeCount = cellInfo.1
+        myCell.imageForCell.image = cellInfo.2
+        
+        //Trying to check if there are no journal entries, probably a bad spot
+        if cellInfo.0 == 0 && cellInfo.1 == 0 {
+            myCell.imageForCell.hidden = true
+        }
+        
+        // Configure Cell
+        //(cell as! CellView).setupCellBeforeDisplay(cellState, date: date)
+        myCell.setupCellBeforeDisplay(cellState, date: date)
+        //myCell.imageForCell.hidden = true
         
     }
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        (cell as? CellView)?.cellSelectionChanged(cellState)
+        (cell as? CellGraphView)?.cellSelectionChanged(cellState)
     }
     
     func calendar(calendar: JTAppleCalendarView, didSelectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
-        (cell as? CellView)?.cellSelectionChanged(cellState)
+        (cell as? CellGraphView)?.cellSelectionChanged(cellState)
         
         passCellDate = cellState.date
         self.performSegueWithIdentifier("Show Detail", sender: self)
