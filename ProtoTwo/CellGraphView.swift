@@ -111,8 +111,10 @@ class CellGraphView: JTAppleDayCellView {
         
         chartView.data = chartData
         
-        chartView.xAxis.labelPosition = .Bottom
-        chartView.drawGridBackgroundEnabled = false
+        //chartView.xAxis.
+        
+        
+        //chartView.drawGridBackgroundEnabled = false
       
         
         

@@ -1543,10 +1543,10 @@
             </objects>
             <point key="canvasLocation" x="-1404" y="897.75"/>
         </scene>
-        <!--Charts Base View Controller-->
+        <!--Charts Test View Controller-->
         <scene sceneID="RIK-hm-Evp">
             <objects>
-                <viewController id="gP9-9s-6aH" customClass="ChartsBaseViewController" customModule="ProtoTwo" sceneMemberID="viewController">
+                <viewController id="gP9-9s-6aH" customClass="ChartsTestViewController" customModule="ProtoTwo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aQz-Hp-Jfd"/>
                         <viewControllerLayoutGuide type="bottom" id="mU0-8b-cxm"/>
@@ -1644,7 +1644,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="barChartView" destination="TeY-vx-cny" id="5xo-vF-AFz"/>
+                        <outlet property="chartView" destination="TeY-vx-cny" id="Fdk-A1-nnq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVV-7F-eaV" userLabel="First Responder" sceneMemberID="firstResponder"/>

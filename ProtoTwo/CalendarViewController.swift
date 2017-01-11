@@ -319,21 +319,25 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         for e in Journal.sharedInstance.journalArray {
             if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : passCellDate){
 
-//                if didSmoke > didNotSmoke {
-//                    image = badWolfImage
-//                } else if didNotSmoke >= didSmoke { ////Something is wrong here.....
-//                    image = goodWolfImage
-//                }
-//        
+                if didSmoke > didNotSmoke {
+                    image = badWolfImage
+                } else if didNotSmoke >= didSmoke { ////Something is wrong here.....
+                    image = goodWolfImage
+                } else {
+                    if e.quitDayFlag {
+                        image = quitDayImage
+                    }else{
+                        image = blankImage
+                    }
+                }
+        
               
         
-                if e.quitDayFlag {
-                    image = quitDayImage
-                }
+                
                 if e.title == "Former Quit Day" {
                     image = quitDayImageGrey
                     
-                }
+                } 
             }
         }
         for item in AllCostBenefitSheets.sharedInstance.allSheetsArray{

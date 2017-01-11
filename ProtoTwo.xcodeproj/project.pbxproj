@@ -66,6 +66,7 @@
 		F69F59E11DAAFA6800CD8625 /* secondLevelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69F59E01DAAFA6800CD8625 /* secondLevelCell.xib */; };
 		F69F59E31DAAFA7B00CD8625 /* thirdLevelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F69F59E21DAAFA7B00CD8625 /* thirdLevelCell.xib */; };
 		F69F59E51DAAFB2B00CD8625 /* feelingCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F59E41DAAFB2B00CD8625 /* feelingCustomCell.swift */; };
+		F6A1557B1E258C08004D61E2 /* ChartsTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A1557A1E258C08004D61E2 /* ChartsTestViewController.swift */; };
 		F6B81DA21D6656BA00CB1F9D /* GIFImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B81DA11D6656BA00CB1F9D /* GIFImageViewController.swift */; };
 		F6B81DA41D6656D400CB1F9D /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B81DA31D6656D400CB1F9D /* UIImage+Gif.swift */; };
 		F6B81DA61D66570D00CB1F9D /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B81DA51D66570D00CB1F9D /* HelpViewController.swift */; };
@@ -172,6 +173,7 @@
 		F69F59E01DAAFA6800CD8625 /* secondLevelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = secondLevelCell.xib; sourceTree = "<group>"; };
 		F69F59E21DAAFA7B00CD8625 /* thirdLevelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = thirdLevelCell.xib; sourceTree = "<group>"; };
 		F69F59E41DAAFB2B00CD8625 /* feelingCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feelingCustomCell.swift; sourceTree = "<group>"; };
+		F6A1557A1E258C08004D61E2 /* ChartsTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsTestViewController.swift; sourceTree = "<group>"; };
 		F6B81DA11D6656BA00CB1F9D /* GIFImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIFImageViewController.swift; sourceTree = "<group>"; };
 		F6B81DA31D6656D400CB1F9D /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		F6B81DA51D66570D00CB1F9D /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				F6B81DA11D6656BA00CB1F9D /* GIFImageViewController.swift */,
 				F6B81DAC1D665D6300CB1F9D /* CountdownViewController.swift */,
 				F6B81DA51D66570D00CB1F9D /* HelpViewController.swift */,
+				F6A1557A1E258C08004D61E2 /* ChartsTestViewController.swift */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				F6C0AACD1DA31E3100AFB069 /*  FeelingFunnelViewController.swift in Sources */,
 				F60CB96F1D2734F900862881 /* HomeViewController.swift in Sources */,
 				F60CB9751D2734F900862881 /* ProtoTwo.xcdatamodeld in Sources */,
+				F6A1557B1E258C08004D61E2 /* ChartsTestViewController.swift in Sources */,
 				F6B81DAD1D665D6300CB1F9D /* CountdownViewController.swift in Sources */,
 				F69F59E51DAAFB2B00CD8625 /* feelingCustomCell.swift in Sources */,
 				F60E339C1E048C1900F644D6 /* JournalMapViewController.swift in Sources */,
