@@ -44,8 +44,11 @@ class ChartsTestViewController: UIViewController {
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
         let chartData = BarChartData(xVals: xAxis, dataSet: chartDataSet)
         
+        //chartData.barSpace
         //Just dubuggung
         chartDataSet.colors = ChartColorTemplates.colorful()
+        chartDataSet.barSpace = 0.5
+        
         chartData.setDrawValues(false)
         
         //chartView.autoresizesSubviews = true
@@ -73,7 +76,7 @@ class ChartsTestViewController: UIViewController {
         self.chartView.xAxis.drawLabelsEnabled = false
         self.chartView.descriptionText = ""
        // self.chartView.widthAnchor
-        self.chartView.leftAxis.
+        
         
         
         
