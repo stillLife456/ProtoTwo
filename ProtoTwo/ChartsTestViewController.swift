@@ -49,6 +49,7 @@ class ChartsTestViewController: UIViewController {
         chartDataSet.colors = ChartColorTemplates.colorful()
         chartDataSet.barSpace = 0.5
         
+        
         chartData.setDrawValues(false)
         
         //chartView.autoresizesSubviews = true
