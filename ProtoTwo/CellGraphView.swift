@@ -61,7 +61,7 @@ class CellGraphView: JTAppleDayCellView {
         configureImage()
         
         //Configure events
-        configureGraph()
+        //configureGraph()
     }
     
     func configureVisibility(cellState: CellState) {

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import JTAppleCalendar
+import Charts
 
 class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UITextFieldDelegate {
     
@@ -17,6 +18,8 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     var passQuitDate: NSDate!
     
     var data = [JournalEntry]()
+    var xAxis = ["Y","N"]
+    var yAxis = [3.0,6.0]
     
     @IBOutlet weak var quitDayButton: UIButton!
     
@@ -43,7 +46,10 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     let quitDayImage = ImageBank.sharedInstance.quitDayImage
     let quitDayImageGrey = ImageBank.sharedInstance.quitDayImageGrey
     let costBenImage = ImageBank.sharedInstance.costBen
-
+    
+    //Colours for graph
+    let didNotSmokeColor = UIColor(hue: 0.2917, saturation: 0.4, brightness: 0.85, alpha: 1.0)
+    let didSmokeColor = UIColor(hue: 0.9972, saturation: 0.52, brightness: 0.95, alpha: 1.0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +57,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         //clearJournalEntries()
         //clearCostBenSheeets()
         //clearQuitDay()
+        //createDummyJournalEntries()
         
         self.calendarView.dataSource = self
        
@@ -133,10 +140,10 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         let tempLong = -123.876598
        
         
-        while i <= 100 {
-            let entryTime = NSDate(timeIntervalSinceNow: NSTimeInterval((86400/2) * i))
+        while i <= 40 {
+            let entryTime = NSDate(timeIntervalSinceNow: NSTimeInterval((86400.0/1.0) * Double(i)))
 
-         let tempEntry = JournalEntry(title: randomStringWithLength(7) as String, entryTime: entryTime, displayTime: String(entryTime), note: randomStringWithLength(7) as String, quitDayFlag: false, cravingRating: ((i%5) + 1), feelingOne: "Great", feelingTwo: "Greater", latt: (tempLatt * (Double(i)/10.0)), long: tempLong * (Double(i)/10.0), didSmoke: Bool(i%2))
+         let tempEntry = JournalEntry(title: randomStringWithLength(7) as String, entryTime: entryTime, displayTime: String(entryTime), note: randomStringWithLength(7) as String, quitDayFlag: false, cravingRating: ((i%5) + 1), feelingOne: "Great", feelingTwo: "Greater", latt: (tempLatt * (Double(i)/100.0)), long: tempLong * (Double(i)/100.0), didSmoke: Bool(i%1))
             Journal.sharedInstance.journalArray.append(tempEntry!)
             Journal.sharedInstance.saveJournalEntries()
             i++
@@ -290,50 +297,36 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
        
     }
     
-    func getCellInfo(cellState: CellState) -> (Int, Int, UIImage){
+    func getCellInfo(date: NSDate) -> ([Double], UIImage){
     
         var didSmoke = 0
         var didNotSmoke = 0
         var image = blankImage
-//        var title = ""
-//        var quitDayFlag = false
         
         for e in Journal.sharedInstance.journalArray {
-            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : passCellDate){
+            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : date){
                 if e.didSmoke!{
                     didSmoke += 1
                 }
                 if !e.didSmoke!{
                     didNotSmoke += 1
                 }
-//                if e.title == "Former Quit Day"{
-//                    title = e.title!
-//                }
-//                if e.quitDayFlag{
-//                    quitDayFlag = true
-//                }
+
             }
        
         }
      
         for e in Journal.sharedInstance.journalArray {
-            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : passCellDate){
+            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : date){
 
                 if didSmoke > didNotSmoke {
                     image = badWolfImage
                 } else if didNotSmoke >= didSmoke { ////Something is wrong here.....
                     image = goodWolfImage
-                } else {
-                    if e.quitDayFlag {
-                        image = quitDayImage
-                    }else{
-                        image = blankImage
-                    }
                 }
-        
-              
-        
-                
+                if e.quitDayFlag {
+                        image = quitDayImage
+                }
                 if e.title == "Former Quit Day" {
                     image = quitDayImageGrey
                     
@@ -341,15 +334,16 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             }
         }
         for item in AllCostBenefitSheets.sharedInstance.allSheetsArray{
-            if testCalendar.isDate(item.dateMade, inSameDayAsDate : cellState.date){
+            if testCalendar.isDate(item.dateMade, inSameDayAsDate : date){
                 image = costBenImage
                 
             }
         }
-        
+    
+        let returnArray = [Double(didSmoke),Double(didNotSmoke)]
      
         
-            let returnTuple = (didSmoke, didNotSmoke, image)
+            let returnTuple = (returnArray, image)
         
         return returnTuple
     
@@ -398,6 +392,73 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         }
         
         return passEvents
+    }
+    
+    func getChartData(dataPoints: [String], values: [Double]) -> BarChartData{ ////////////
+        
+        var dataEntries: [BarChartDataEntry] = []
+        
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        
+        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
+        let chartData = BarChartData(xVals: xAxis, dataSet: chartDataSet)
+        
+        
+        //Formatting?
+        chartData.setDrawValues(false)// Hide chart value numerals on chart
+        
+        
+        chartDataSet.barSpace = 0.1 // percent of view that is space between bars
+       
+        chartDataSet.colors = ChartColorTemplates.colorful()
+        
+        chartDataSet.colors = [didSmokeColor,didNotSmokeColor]
+        
+        return chartData
+    }
+    
+    func formatChartView(chartView: BarChartView) -> BarChartView{
+    
+        //Just dubuggung
+        //chartDataSet.colors = ChartColorTemplates.colorful()
+        
+        //Chart Layout
+        chartView.rightAxis.spaceBottom = 0.0
+        chartView.rightAxis.spaceTop = 0.0
+        chartView.minOffset = 0
+        chartView.backgroundColor = UIColor.clearColor()
+        
+        //Chart Labels and Values
+        
+        chartView.drawValueAboveBarEnabled = false
+        chartView.leftAxis.drawLabelsEnabled = false
+        chartView.rightAxis.drawLabelsEnabled = false
+        chartView.drawGridBackgroundEnabled = false
+        chartView.xAxis.drawLabelsEnabled = false
+        chartView.descriptionText = ""
+        chartView.legend.enabled = false
+        
+        //Hiding Lines
+        chartView.xAxis.drawGridLinesEnabled = false
+        chartView.drawBordersEnabled = false
+        chartView.leftAxis.drawAxisLineEnabled = false
+        chartView.rightAxis.drawAxisLineEnabled = false
+        chartView.leftAxis.drawGridLinesEnabled = false
+        chartView.rightAxis.drawGridLinesEnabled = false
+        
+        //        self.chartView.leftAxis.calculate(min: 0.0, max: 10.0)
+        //        self.chartView.rightAxis.calculate(min: 0.0, max: 10.0)
+        
+        //Chart Axis Values
+        chartView.leftAxis.axisMinValue = 0
+        chartView.rightAxis.axisMinValue = 0
+        
+        chartView.setScaleEnabled(true)
+    
+        return chartView
     }
     
 
@@ -469,16 +530,22 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         let myCell = cell as! CellGraphView
         
         //maybe this is dumb
-        let cellInfo = getCellInfo(cellState)
+        let cellInfo = getCellInfo(date)
         
-        myCell.didSmokeCount = cellInfo.0
-        myCell.didNotSmokeCount = cellInfo.1
-        myCell.imageForCell.image = cellInfo.2
+        let countArray = cellInfo.0
+        
+      
+        
+        myCell.imageForCell.image = cellInfo.1
         
         //Trying to check if there are no journal entries, probably a bad spot
-        if cellInfo.0 == 0 && cellInfo.1 == 0 {
-            myCell.imageForCell.hidden = true
-        }
+//        if cellInfo.0 == 0 && cellInfo.1 == 0 {
+//            myCell.imageForCell.hidden = true
+//        }
+        
+        myCell.chartView.data = getChartData(xAxis, values: countArray)////////////
+        
+        myCell.chartView = formatChartView(myCell.chartView)
         
         // Configure Cell
         //(cell as! CellView).setupCellBeforeDisplay(cellState, date: date)

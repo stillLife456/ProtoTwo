@@ -44,9 +44,9 @@
                         </label>
                     </subviews>
                 </stackView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4c-Mj-GZU" customClass="BarChartView" customModule="Charts">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4c-Mj-GZU" customClass="BarChartView" customModule="Charts">
                     <rect key="frame" x="0.0" y="25" width="73" height="123"/>
-                    <color key="backgroundColor" red="0.18953054759999999" green="0.83196989529999998" blue="0.05860550355" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

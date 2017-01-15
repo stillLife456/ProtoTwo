@@ -88,6 +88,7 @@
 		F6D72EAE1D41D69500AEDCF9 /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D72EAD1D41D69500AEDCF9 /* CellView.xib */; };
 		F6D72EB01D41D6A600AEDCF9 /* ImageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D72EAF1D41D6A600AEDCF9 /* ImageBank.swift */; };
 		F6D72EB41D41D71300AEDCF9 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D72EB31D41D71300AEDCF9 /* AnimationClass.swift */; };
+		F6EF87391E2AF0A800C3B8E5 /* CellGraphObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF87381E2AF0A800C3B8E5 /* CellGraphObject.swift */; };
 		F6F34A9A1D42E64A002B8D56 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F34A991D42E64A002B8D56 /* Weekday.swift */; };
 		F6F5001F1DEE348300AE1E5B /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */; };
 		F6FEC7761DB958B0007D4EA5 /* FeelingCellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEC7751DB958B0007D4EA5 /* FeelingCellDataModel.swift */; };
@@ -195,6 +196,7 @@
 		F6D72EAD1D41D69500AEDCF9 /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
 		F6D72EAF1D41D6A600AEDCF9 /* ImageBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBank.swift; sourceTree = "<group>"; };
 		F6D72EB31D41D71300AEDCF9 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
+		F6EF87381E2AF0A800C3B8E5 /* CellGraphObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellGraphObject.swift; sourceTree = "<group>"; };
 		F6F34A991D42E64A002B8D56 /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		F6FEC7751DB958B0007D4EA5 /* FeelingCellDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeelingCellDataModel.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				F6D72EAD1D41D69500AEDCF9 /* CellView.xib */,
 				F6B86A331E24631400A6B161 /* CellGraphView.xib */,
 				F6B86A351E24636300A6B161 /* CellGraphView.swift */,
+				F6EF87381E2AF0A800C3B8E5 /* CellGraphObject.swift */,
 				F6081C101E1F14100008C3C4 /* PinkSectionHeaderView.xib */,
 				F6081C0E1E1F14100008C3C4 /* PinkSectionHeaderView.swift */,
 				F6D72EA71D41D60200AEDCF9 /* DetailViewController.swift */,
@@ -776,6 +779,7 @@
 				F6F5001F1DEE348300AE1E5B /* PhoneViewController.swift in Sources */,
 				F669CF931DB4A16600E849DC /* Feeling3CustomCell.swift in Sources */,
 				F6749E4A1D693E89001C1586 /* CostBenefitSheet.swift in Sources */,
+				F6EF87391E2AF0A800C3B8E5 /* CellGraphObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

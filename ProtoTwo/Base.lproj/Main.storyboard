@@ -1597,13 +1597,17 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="TeY-vx-cny" secondAttribute="leading" id="9hu-9U-HKq"/>
-                            <constraint firstItem="Slz-Vk-OfO" firstAttribute="top" secondItem="TeY-vx-cny" secondAttribute="bottom" constant="18" id="KeL-u1-CCi"/>
+                            <constraint firstItem="Slz-Vk-OfO" firstAttribute="top" secondItem="TeY-vx-cny" secondAttribute="bottom" constant="18" id="KeL-u1-CCi">
+                                <variation key="heightClass=regular-widthClass=compact" constant="35"/>
+                            </constraint>
                             <constraint firstItem="Slz-Vk-OfO" firstAttribute="centerX" secondItem="8y1-vb-V21" secondAttribute="centerX" id="Tci-ws-Dqf"/>
                             <constraint firstItem="Slz-Vk-OfO" firstAttribute="centerY" secondItem="8y1-vb-V21" secondAttribute="centerY" id="U2h-Jw-x8a"/>
                             <constraint firstItem="I3v-0E-S22" firstAttribute="top" secondItem="aQz-Hp-Jfd" secondAttribute="bottom" id="VE5-Dc-lRU"/>
                             <constraint firstItem="TeY-vx-cny" firstAttribute="top" secondItem="aQz-Hp-Jfd" secondAttribute="bottom" constant="69" id="eBN-Ds-DZq"/>
                             <constraint firstAttribute="trailing" secondItem="I3v-0E-S22" secondAttribute="trailing" id="osf-7G-rD8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="TeY-vx-cny" secondAttribute="trailing" id="p15-de-jan"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TeY-vx-cny" secondAttribute="trailing" id="p15-de-jan">
+                                <variation key="heightClass=regular-widthClass=compact" constant="244"/>
+                            </constraint>
                             <constraint firstItem="I3v-0E-S22" firstAttribute="leading" secondItem="8y1-vb-V21" secondAttribute="leading" id="wa9-av-dXv"/>
                         </constraints>
                         <variation key="default">

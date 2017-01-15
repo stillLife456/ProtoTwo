@@ -44,62 +44,46 @@ class ChartsTestViewController: UIViewController {
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
         let chartData = BarChartData(xVals: xAxis, dataSet: chartDataSet)
         
-        //chartData.barSpace
+        
         //Just dubuggung
         chartDataSet.colors = ChartColorTemplates.colorful()
-        chartDataSet.barSpace = 0.5
         
+        //Chart Layout
+        chartDataSet.barSpace = 0.1 // percent of view that is space between bars
+        self.chartView.rightAxis.spaceBottom = 0.0
+        self.chartView.rightAxis.spaceTop = 0.0
+        chartView.minOffset = 0
+        chartView.backgroundColor = UIColor.clearColor()
         
-        chartData.setDrawValues(false)
-        
-        //chartView.autoresizesSubviews = true
-        //chartView.autoScaleMinMaxEnabled = true
-        self.chartView.xAxis.drawGridLinesEnabled = false
+        //Chart Labels and Values
+        chartData.setDrawValues(false)// Hide chart value numerals on chart
         self.chartView.drawValueAboveBarEnabled = false
-        self.chartView.drawBordersEnabled = false
-        //self.chartView.isDrawGridBackgroundEnabled = false
-        
         self.chartView.leftAxis.drawLabelsEnabled = false
         self.chartView.rightAxis.drawLabelsEnabled = false
+        self.chartView.drawGridBackgroundEnabled = false
+        self.chartView.xAxis.drawLabelsEnabled = false
+        self.chartView.descriptionText = ""
+         self.chartView.legend.enabled = false
+        
+        //Hiding Lines
+        self.chartView.xAxis.drawGridLinesEnabled = false
+        self.chartView.drawBordersEnabled = false
         self.chartView.leftAxis.drawAxisLineEnabled = false
         self.chartView.rightAxis.drawAxisLineEnabled = false
         self.chartView.leftAxis.drawGridLinesEnabled = false
         self.chartView.rightAxis.drawGridLinesEnabled = false
         
-        self.chartView.rightAxis.drawAxisLineEnabled = false
-        self.chartView.leftAxis.calculate(min: 0.0, max: 10.0)
-        self.chartView.rightAxis.calculate(min: 0.0, max: 10.0)
-        
-        self.chartView.rightAxis.spaceBottom = 0.0
-        self.chartView.rightAxis.spaceTop = 0.0
-        //self.chartView.rightAxis.isDrawGridLinesEnabled = false
-        self.chartView.drawGridBackgroundEnabled = false
-        self.chartView.xAxis.drawLabelsEnabled = false
-        self.chartView.descriptionText = ""
-       // self.chartView.widthAnchor
-        
-        
-        
-        
-        self.chartView.legend.enabled = false
-        
-//        let yaxis = chartView.getAxis(ChartYAxis.AxisDependency.Right)
-//        yaxis.drawLabelsEnabled = false
-//        let yaxis2 = chartView.getAxis(ChartYAxis.AxisDependency.Left)
-//        yaxis2.drawLabelsEnabled = false
-        
+//        self.chartView.leftAxis.calculate(min: 0.0, max: 10.0)
+//        self.chartView.rightAxis.calculate(min: 0.0, max: 10.0)
+
+        //Chart Axis Values
+        chartView.leftAxis.axisMinValue = 0
+        chartView.rightAxis.axisMinValue = 0
+
         chartView.setScaleEnabled(true)
        
         
         chartView.data = chartData
-        
-        //chartView.xAxis.
-        
-        
-        //chartView.drawGridBackgroundEnabled = false
-        
-        
-        
         
     }
     
