@@ -89,6 +89,7 @@
 		F6D72EB01D41D6A600AEDCF9 /* ImageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D72EAF1D41D6A600AEDCF9 /* ImageBank.swift */; };
 		F6D72EB41D41D71300AEDCF9 /* AnimationClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D72EB31D41D71300AEDCF9 /* AnimationClass.swift */; };
 		F6EF87391E2AF0A800C3B8E5 /* CellGraphObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF87381E2AF0A800C3B8E5 /* CellGraphObject.swift */; };
+		F6EF873C1E2B108000C3B8E5 /* IntroSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF873B1E2B108000C3B8E5 /* IntroSurveyViewController.swift */; };
 		F6F34A9A1D42E64A002B8D56 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F34A991D42E64A002B8D56 /* Weekday.swift */; };
 		F6F5001F1DEE348300AE1E5B /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */; };
 		F6FEC7761DB958B0007D4EA5 /* FeelingCellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEC7751DB958B0007D4EA5 /* FeelingCellDataModel.swift */; };
@@ -197,6 +198,7 @@
 		F6D72EAF1D41D6A600AEDCF9 /* ImageBank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBank.swift; sourceTree = "<group>"; };
 		F6D72EB31D41D71300AEDCF9 /* AnimationClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationClass.swift; sourceTree = "<group>"; };
 		F6EF87381E2AF0A800C3B8E5 /* CellGraphObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellGraphObject.swift; sourceTree = "<group>"; };
+		F6EF873B1E2B108000C3B8E5 /* IntroSurveyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroSurveyViewController.swift; sourceTree = "<group>"; };
 		F6F34A991D42E64A002B8D56 /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		F6FEC7751DB958B0007D4EA5 /* FeelingCellDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeelingCellDataModel.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				F60CB96C1D2734F900862881 /* AppDelegate.swift */,
 				F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */,
 				F6CA790C1DEF9D4000C5C5FA /* MapOverviewViewController.swift */,
+				F6EF873A1E2B104700C3B8E5 /* IntroSurvey */,
 				F6D72EB11D41D6CC00AEDCF9 /* Calendar */,
 				F60CB96E1D2734F900862881 /* HomeViewController.swift */,
 				F6D72EB21D41D6DC00AEDCF9 /* Notification */,
@@ -438,6 +441,14 @@
 				F68E01C31D987E4B00F3909A /* GPSNotificationMapViewController.swift */,
 			);
 			name = Notification;
+			sourceTree = "<group>";
+		};
+		F6EF873A1E2B104700C3B8E5 /* IntroSurvey */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF873B1E2B108000C3B8E5 /* IntroSurveyViewController.swift */,
+			);
+			name = IntroSurvey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -757,6 +768,7 @@
 				F60E339C1E048C1900F644D6 /* JournalMapViewController.swift in Sources */,
 				F638AF461DA3714D0063BCBB /* FeelingControl.swift in Sources */,
 				F6F34A9A1D42E64A002B8D56 /* Weekday.swift in Sources */,
+				F6EF873C1E2B108000C3B8E5 /* IntroSurveyViewController.swift in Sources */,
 				F6C0AAD01DA3221900AFB069 /* FeelingFunnelPopOver.swift in Sources */,
 				F6B86A361E24636300A6B161 /* CellGraphView.swift in Sources */,
 				F6D72EA61D41D5DA00AEDCF9 /* CalendarViewController.swift in Sources */,

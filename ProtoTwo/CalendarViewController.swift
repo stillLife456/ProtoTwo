@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import JTAppleCalendar
 import Charts
+import PBTutorialManager
+import JMHoledView
 
 class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UITextFieldDelegate {
     
@@ -29,7 +31,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     // date picker stuff
     
     var popDatePicker : PopDatePicker?
-    //var sharedJournal = Journal.sharedInstance.journalArray
+   
     
     @IBOutlet weak var quitDayLabel: UILabel!
 
@@ -81,29 +83,45 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         if getQuitDayFromJournal() {
             quitDayLabel.text! = "Your Quitting Day:"
         }
+        
+        runTutorial()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
     
-//    init? (title: String, entryTime: NSDate, displayTime: String, note: String, quitDayFlag: Bool, cravingRating: Int, feelingOne: String, feelingTwo: String, latt: Double, long: Double, didSmoke: Bool ){
-//        self.title = title
-//        self.entryTime = entryTime // As an NSDate
-//        self.displayTime = displayTime // As String
-//        self.note = note
-//        self.quitDayFlag = quitDayFlag
-//        self.cravingRating = cravingRating
-//        self.feelingOne = feelingOne
-//        self.feelingTwo = feelingTwo
-//        self.latt = latt
-//        self.long = long
-//        self.coordinate = CLLocationCoordinate2D(latitude: latt, longitude: long)
-//        self.radius = 10
-//        self.didSmoke = didSmoke
-//        
-//        super.init()
-//        
-//        if title.isEmpty {
-//            return nil
-//        }
+    }
+    
+    func runTutorial(){
+        
+       
+        
+        let targetCalendar = Target(view: calendarView)
+            .withArrow(true)
+            .heightArrow(50)
+            .widthArrow(25)
+            .position(.Bottom)
+            .shape(JMHoleType.RoundedRect)
+            .duration(1.0)
+            .message("Calendar")
+        
+        let targetQuitDay = Target(view: quitDayLabel)
+            .withArrow(true)
+            .heightArrow(50)
+            .widthArrow(25)
+            .position(.Bottom)
+            .shape(JMHoleType.RoundedRect)
+            .duration(1.0)
+            .message("QuitDay")
+        
+        
+        let tutorialManager = TutorialManager(parentView: view)
+            tutorialManager.addTarget(targetCalendar)
+            tutorialManager.fireTargets()
+        
+    }
+
     
     func clearQuitDay(){
         for e in Journal.sharedInstance.journalArray {
@@ -132,7 +150,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         return randomString
     }
 
-    
+  
     func createDummyJournalEntries(){
         
         var i = 0
@@ -140,10 +158,10 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         let tempLong = -123.876598
        
         
-        while i <= 40 {
-            let entryTime = NSDate(timeIntervalSinceNow: NSTimeInterval((86400.0/1.0) * Double(i)))
+        while i <= 12 {
+            let entryTime = NSDate(timeIntervalSinceNow: NSTimeInterval((86400.0/0.7) * Double(i)))
 
-         let tempEntry = JournalEntry(title: randomStringWithLength(7) as String, entryTime: entryTime, displayTime: String(entryTime), note: randomStringWithLength(7) as String, quitDayFlag: false, cravingRating: ((i%5) + 1), feelingOne: "Great", feelingTwo: "Greater", latt: (tempLatt * (Double(i)/100.0)), long: tempLong * (Double(i)/100.0), didSmoke: Bool(i%1))
+         let tempEntry = JournalEntry(title: randomStringWithLength(7) as String, entryTime: entryTime, displayTime: formatDate(entryTime), note: randomStringWithLength(7) as String, quitDayFlag: false, cravingRating: ((i%5) + 1), feelingOne: "Great", feelingTwo: "Greater", latt: (tempLatt * (Double(i)/100.0)), long: tempLong * (Double(i)/100.0), didSmoke: Bool(i%6))
             Journal.sharedInstance.journalArray.append(tempEntry!)
             Journal.sharedInstance.saveJournalEntries()
             i++
@@ -311,28 +329,33 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                 if !e.didSmoke!{
                     didNotSmoke += 1
                 }
-
-            }
-       
-        }
-     
-        for e in Journal.sharedInstance.journalArray {
-            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : date){
-
-                if didSmoke > didNotSmoke {
-                    image = badWolfImage
-                } else if didNotSmoke >= didSmoke { ////Something is wrong here.....
-                    image = goodWolfImage
-                }
+                
+                
                 if e.quitDayFlag {
-                        image = quitDayImage
+                    image = quitDayImage
+                } else if !e.quitDayFlag {
+                    if didSmoke > didNotSmoke {
+                        image = badWolfImage
+                    } else if didSmoke <= didNotSmoke {
+                        image = goodWolfImage
+                    }
                 }
                 if e.title == "Former Quit Day" {
                     image = quitDayImageGrey
                     
-                } 
+                }
+
+
             }
+            
         }
+     
+//        for e in Journal.sharedInstance.journalArray {
+//            if testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : date){
+//
+//               
+//            }
+//        }
         for item in AllCostBenefitSheets.sharedInstance.allSheetsArray{
             if testCalendar.isDate(item.dateMade, inSameDayAsDate : date){
                 image = costBenImage
@@ -368,12 +391,12 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
                     print("Counted Failure")
                 }else if e.title == "Quit Day"{
                     quitDayTextField.text = (e.entryTime.ToDateMediumString() ?? "?") as String
-                    print("????????????????????????????????????????????")
-                    print("Found Quit Day")
+//                    print("????????????????????????????????????????????")
+//                    print("Found Quit Day")
                 }
                 
                 passEvents.append(e)
-                print("Doosdfhksjdfhks")
+                //print("Doosdfhksjdfhks")
             }
             
           

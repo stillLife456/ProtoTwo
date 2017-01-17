@@ -130,6 +130,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let event = self.dayEvents[indexPath.row] as? JournalEntry{
         self.performSegueWithIdentifier("ShowJournalDetail", sender: self)
             print("Thought it was event")
+            print(event.displayTime)
+            print(event.entryTime)
         }
         
         if let costBen = self.dayEvents[indexPath.row] as? CostBenefitSheetModel{
