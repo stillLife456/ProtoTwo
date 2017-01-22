@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>JMHoledView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>JTAppleCalendar-JTAppleCalendar.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -35,16 +30,6 @@
 			<false/>
 		</dict>
 		<key>LTMorphingLabel.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PBTutorialManager-REIS-Regular.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PBTutorialManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -77,17 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>240218ECBEC1EF8F26AA553DB8DF49FB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3B7EE1FA7F173FAC486DA7E11AAE3919</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>3C900E8E2449EBBCC12128A9BDA69E7F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5E37978B224B4636CD1055332A249C45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -102,17 +87,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A4940D9F22AE85B257370831370AD502</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AA61888396D251DCD47ED2976EBF0FEE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE9C07071F2BE8ACABDC9885F80929EB</key>
+		<key>8A1C6E5494B2BD028D37FB2B822AE343</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -123,11 +98,6 @@
 			<true/>
 		</dict>
 		<key>CF0A5444178C2310C3CBE8846F35C384</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E6F4FFAF01F8125BB2BF8F080A491BCD</key>
 		<dict>
 			<key>primary</key>
 			<true/>

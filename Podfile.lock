@@ -3,34 +3,27 @@ PODS:
     - Charts/Core (= 2.3.0)
   - Charts/Core (2.3.0)
   - CountdownLabel (1.2.0)
-  - JMHoledView (0.1.1)
   - JTAppleCalendar (4.0.0)
   - KMPlaceholderTextView (1.2.2)
   - LTMorphingLabel (0.3.0)
-  - PBTutorialManager (1.0.3):
-    - JMHoledView
   - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
   - Charts (= 2.3.0)
   - CountdownLabel
-  - JMHoledView
   - JTAppleCalendar (= 4.0.0)
   - KMPlaceholderTextView (~> 1.2.0)
   - LTMorphingLabel
-  - PBTutorialManager
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Charts: 55d7fd9af175b500208601bea872f0fc72c1d19e
   CountdownLabel: 7dcc9bb2c8f488af7a4d29053f41c014ea0b973d
-  JMHoledView: 658ac18cb05dd61df61e2dd2ba7261d93488498d
   JTAppleCalendar: 65972e6d1039068c46b354d6aadd3da875ae5c7b
   KMPlaceholderTextView: bbff031935d84f7eedb585e7f77120020fbae9e8
   LTMorphingLabel: 2777d8d9cb699125f48dfcd95d78bd3d77c87ade
-  PBTutorialManager: bf5bf04969cec93dccec70b56d6247375af545a2
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: 410bf71af407d78596186fe473dcbc6da9e87007
+PODFILE CHECKSUM: 475546c6cee5afb6cad5ae7abbeb26ec08bf7388
 
 COCOAPODS: 1.0.0

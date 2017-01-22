@@ -59,6 +59,9 @@
 		F67BA8F11D9F238D003B176B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA8F01D9F238D003B176B /* CustomSlider.swift */; };
 		F67BA8F21D9F238D003B176B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA8F01D9F238D003B176B /* CustomSlider.swift */; };
 		F67BA8F31D9F238D003B176B /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67BA8F01D9F238D003B176B /* CustomSlider.swift */; };
+		F6876F381E3019B600655162 /* TutorialViewControllerA.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6876F371E3019B600655162 /* TutorialViewControllerA.swift */; };
+		F6876F3A1E3019CA00655162 /* TutorialViewControllerB.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6876F391E3019CA00655162 /* TutorialViewControllerB.swift */; };
+		F6876F3C1E3039F500655162 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6876F3B1E3039F500655162 /* TutorialPageViewController.swift */; };
 		F68E01C41D987E4B00F3909A /* GPSNotificationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68E01C31D987E4B00F3909A /* GPSNotificationMapViewController.swift */; };
 		F68E01C61D98B23B00F3909A /* SmokingSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68E01C51D98B23B00F3909A /* SmokingSegmentedControl.swift */; };
 		F69F59DD1DAAF11E00CD8625 /* CellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = F69F59DC1DAAF11E00CD8625 /* CellDescriptor.plist */; };
@@ -168,6 +171,9 @@
 		F67AF2531D2766A7002901EB /* wolf6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wolf6.mp3; sourceTree = "<group>"; };
 		F67BA8EC1D9F0E63003B176B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F67BA8F01D9F238D003B176B /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		F6876F371E3019B600655162 /* TutorialViewControllerA.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerA.swift; sourceTree = "<group>"; };
+		F6876F391E3019CA00655162 /* TutorialViewControllerB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerB.swift; sourceTree = "<group>"; };
+		F6876F3B1E3039F500655162 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		F68E01C31D987E4B00F3909A /* GPSNotificationMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPSNotificationMapViewController.swift; sourceTree = "<group>"; };
 		F68E01C51D98B23B00F3909A /* SmokingSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmokingSegmentedControl.swift; sourceTree = "<group>"; };
 		F69F59DC1DAAF11E00CD8625 /* CellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CellDescriptor.plist; sourceTree = "<group>"; };
@@ -303,7 +309,7 @@
 				F60CB96C1D2734F900862881 /* AppDelegate.swift */,
 				F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */,
 				F6CA790C1DEF9D4000C5C5FA /* MapOverviewViewController.swift */,
-				F6EF873A1E2B104700C3B8E5 /* IntroSurvey */,
+				F6876F361E30197E00655162 /* Tutorial */,
 				F6D72EB11D41D6CC00AEDCF9 /* Calendar */,
 				F60CB96E1D2734F900862881 /* HomeViewController.swift */,
 				F6D72EB21D41D6DC00AEDCF9 /* Notification */,
@@ -376,6 +382,17 @@
 			name = Sounds;
 			sourceTree = "<group>";
 		};
+		F6876F361E30197E00655162 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				F6876F371E3019B600655162 /* TutorialViewControllerA.swift */,
+				F6EF873B1E2B108000C3B8E5 /* IntroSurveyViewController.swift */,
+				F6876F391E3019CA00655162 /* TutorialViewControllerB.swift */,
+				F6876F3B1E3039F500655162 /* TutorialPageViewController.swift */,
+			);
+			name = Tutorial;
+			sourceTree = "<group>";
+		};
 		F69F59DB1DAAF0D500CD8625 /* Feeling Funnell */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,14 +458,6 @@
 				F68E01C31D987E4B00F3909A /* GPSNotificationMapViewController.swift */,
 			);
 			name = Notification;
-			sourceTree = "<group>";
-		};
-		F6EF873A1E2B104700C3B8E5 /* IntroSurvey */ = {
-			isa = PBXGroup;
-			children = (
-				F6EF873B1E2B108000C3B8E5 /* IntroSurveyViewController.swift */,
-			);
-			name = IntroSurvey;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -745,6 +754,7 @@
 				3E046F761D418FA90018FE2D /* AddNotificationTableViewController.swift in Sources */,
 				F634A6691DBC0B4100680FD1 /* CostBenefitCell.swift in Sources */,
 				F60CB99E1D2751DF00862881 /* JournalViewController.swift in Sources */,
+				F6876F381E3019B600655162 /* TutorialViewControllerA.swift in Sources */,
 				F66D4BFE1DA44F37008A28BE /* Node.swift in Sources */,
 				F6FEC7761DB958B0007D4EA5 /* FeelingCellDataModel.swift in Sources */,
 				F66239851D44100C00086296 /* Utilities.swift in Sources */,
@@ -754,6 +764,7 @@
 				F6CA790D1DEF9D4000C5C5FA /* MapOverviewViewController.swift in Sources */,
 				F67AF24E1D276522002901EB /* Journal.swift in Sources */,
 				F6D72EA21D41D09B00AEDCF9 /* Notification.swift in Sources */,
+				F6876F3C1E3039F500655162 /* TutorialPageViewController.swift in Sources */,
 				F634A66B1DBC10FE00680FD1 /* CostBenefitTableViewController.swift in Sources */,
 				F669CF911DB4A15300E849DC /* Feeling2CustomCell.swift in Sources */,
 				F6B81DA61D66570D00CB1F9D /* HelpViewController.swift in Sources */,
@@ -768,6 +779,7 @@
 				F60E339C1E048C1900F644D6 /* JournalMapViewController.swift in Sources */,
 				F638AF461DA3714D0063BCBB /* FeelingControl.swift in Sources */,
 				F6F34A9A1D42E64A002B8D56 /* Weekday.swift in Sources */,
+				F6876F3A1E3019CA00655162 /* TutorialViewControllerB.swift in Sources */,
 				F6EF873C1E2B108000C3B8E5 /* IntroSurveyViewController.swift in Sources */,
 				F6C0AAD01DA3221900AFB069 /* FeelingFunnelPopOver.swift in Sources */,
 				F6B86A361E24636300A6B161 /* CellGraphView.swift in Sources */,

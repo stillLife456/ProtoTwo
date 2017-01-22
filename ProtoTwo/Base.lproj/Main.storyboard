@@ -2260,6 +2260,62 @@
             </objects>
             <point key="canvasLocation" x="327" y="954"/>
         </scene>
+        <!--Tutorial View ControllerA-->
+        <scene sceneID="H0Y-Qg-YZN">
+            <objects>
+                <viewController storyboardIdentifier="TootA" id="t5l-RZ-0OQ" customClass="TutorialViewControllerA" customModule="ProtoTwo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e2b-kS-jpu"/>
+                        <viewControllerLayoutGuide type="bottom" id="pK2-te-Q2P"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TSx-lY-inL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View One Buddy!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlt-tj-buO">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Dlt-tj-buO" firstAttribute="centerX" secondItem="TSx-lY-inL" secondAttribute="centerX" id="VSe-fo-p8W"/>
+                            <constraint firstItem="Dlt-tj-buO" firstAttribute="centerY" secondItem="TSx-lY-inL" secondAttribute="centerY" id="l7C-5o-rNq"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Dlt-tj-buO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="VSe-fo-p8W"/>
+                                <exclude reference="l7C-5o-rNq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Dlt-tj-buO"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="VSe-fo-p8W"/>
+                                <include reference="l7C-5o-rNq"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rOe-zy-nvX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1224" y="-645.75"/>
+        </scene>
+        <!--Tutorial Page View Controller-->
+        <scene sceneID="LfO-pi-Jxb">
+            <objects>
+                <pageViewController storyboardIdentifier="TutorialController" autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="PQY-L2-uh3" customClass="TutorialPageViewController" customModule="ProtoTwo" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="80n-Z0-cDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-546" y="-1300.5"/>
+        </scene>
         <!--Intro Survey View Controller-->
         <scene sceneID="Ltd-Zs-xrl">
             <objects>
@@ -2275,7 +2331,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Many Cigarettes Do You Smoke in a Day?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BI-Wp-69Z">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WNd-VY-aYo">
@@ -2291,13 +2347,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Long After Waking Do You " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BOx-Tt-HjP">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have Your First Ciagarette?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EVe-Lt-HwM">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O60-LZ-P1g">
@@ -2310,7 +2366,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYo-Sw-uuh">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2401,7 +2457,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37M-7m-I35" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="168" y="-640.5"/>
+            <point key="canvasLocation" x="-564" y="-645.75"/>
+        </scene>
+        <!--Tutorial View ControllerB-->
+        <scene sceneID="qDz-l3-uOH">
+            <objects>
+                <viewController storyboardIdentifier="TootB" id="7nT-Gf-C5E" customClass="TutorialViewControllerB" customModule="ProtoTwo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H3k-nz-N3U"/>
+                        <viewControllerLayoutGuide type="bottom" id="fvI-kg-V6v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b5P-eH-jQQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Second View Buddah!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYV-A3-eYZ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hYV-A3-eYZ" firstAttribute="centerY" secondItem="b5P-eH-jQQ" secondAttribute="centerY" id="DsF-t1-BoO"/>
+                            <constraint firstItem="hYV-A3-eYZ" firstAttribute="centerX" secondItem="b5P-eH-jQQ" secondAttribute="centerX" id="noy-BY-xAI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="hYV-A3-eYZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="DsF-t1-BoO"/>
+                                <exclude reference="noy-BY-xAI"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="hYV-A3-eYZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="DsF-t1-BoO"/>
+                                <include reference="noy-BY-xAI"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s1s-c7-kby" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="-643.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="heT-sb-cVm">

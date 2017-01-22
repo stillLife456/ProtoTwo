@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import CoreLocation
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
     
@@ -86,18 +87,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             
             //This will go into the true condition once working
             //First time, open a new page view controller.
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let rootController = storyboard!.instantiateViewControllerWithIdentifier("IntroSurvey")
-            
+//            storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let rootController = storyboard!.instantiateViewControllerWithIdentifier("IntroSurvey")
+//            
             if let window = self.window {
-                window.rootViewController = rootController
+               // window.rootViewController = rootController
             }
         } else {
                 print("Not the first launch")
         }
         
-      
-        
+//        storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let rootController = storyboard!.instantiateViewControllerWithIdentifier("TutorialController")
+//        
+// 
+//     
         
         
         return true

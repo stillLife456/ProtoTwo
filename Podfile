@@ -12,8 +12,7 @@ pod 'SwiftyJSON'
 pod 'CountdownLabel'
 pod 'LTMorphingLabel'
 pod 'Charts', '2.3.0'
-pod 'PBTutorialManager'
-pod 'JMHoledView'
+
 
 
   target 'ProtoTwoTests' do

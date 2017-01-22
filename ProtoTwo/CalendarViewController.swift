@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import JTAppleCalendar
 import Charts
-import PBTutorialManager
-import JMHoledView
+
+
 
 class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UITextFieldDelegate {
     
@@ -84,7 +84,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             quitDayLabel.text! = "Your Quitting Day:"
         }
         
-        runTutorial()
+        //runTutorial()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -96,29 +96,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     func runTutorial(){
         
        
-        
-        let targetCalendar = Target(view: calendarView)
-            .withArrow(true)
-            .heightArrow(50)
-            .widthArrow(25)
-            .position(.Bottom)
-            .shape(JMHoleType.RoundedRect)
-            .duration(1.0)
-            .message("Calendar")
-        
-        let targetQuitDay = Target(view: quitDayLabel)
-            .withArrow(true)
-            .heightArrow(50)
-            .widthArrow(25)
-            .position(.Bottom)
-            .shape(JMHoleType.RoundedRect)
-            .duration(1.0)
-            .message("QuitDay")
-        
-        
-        let tutorialManager = TutorialManager(parentView: view)
-            tutorialManager.addTarget(targetCalendar)
-            tutorialManager.fireTargets()
+     
         
     }
 
@@ -441,6 +419,8 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         chartDataSet.colors = [didSmokeColor,didNotSmokeColor]
         
         return chartData
+        
+        
     }
     
     func formatChartView(chartView: BarChartView) -> BarChartView{
@@ -563,10 +543,12 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         //Trying to check if there are no journal entries, probably a bad spot
 //        if cellInfo.0 == 0 && cellInfo.1 == 0 {
-//            myCell.imageForCell.hidden = true
+//            myCell.imageForCell.hidden = true 
 //        }
         
         myCell.chartView.data = getChartData(xAxis, values: countArray)////////////
+//
+      let tempBarChart = CellGraphObject(frame: myCell.chartView.frame)
         
         myCell.chartView = formatChartView(myCell.chartView)
         
