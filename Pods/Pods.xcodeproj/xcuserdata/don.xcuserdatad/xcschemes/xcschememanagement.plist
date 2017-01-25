@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KRWalkThrough.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>LTMorphingLabel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,15 +59,15 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyWalkthrough.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>0DA88B4B08DE1A5395D9AE629A5CBFBE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>240218ECBEC1EF8F26AA553DB8DF49FB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -77,6 +82,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3CAC7CEB21590FB34F94B44A1791B442</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>639CD908CBC97119DD5F91B946489274</key>
 		<dict>
 			<key>primary</key>
@@ -87,7 +97,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A1C6E5494B2BD028D37FB2B822AE343</key>
+		<key>7BAD338614CCD4E90DDC35C8E7157FDB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5C1BBA08F2073F97610BA10F0A25CAC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3D026868943D335BA2476C4818C55B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

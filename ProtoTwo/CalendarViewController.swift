@@ -84,7 +84,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             quitDayLabel.text! = "Your Quitting Day:"
         }
         
-        //runTutorial()
+     
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -93,12 +93,6 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     
     }
     
-    func runTutorial(){
-        
-       
-     
-        
-    }
 
     
     func clearQuitDay(){

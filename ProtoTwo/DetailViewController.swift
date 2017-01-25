@@ -16,6 +16,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var tableViewT: UITableView!
     
     var dayEvents: [AnyObject] = []
+    
+    //this shoudn't be in here
+    let calendar = NSCalendar.currentCalendar()
+    
+    
+    let smokeYesImage = ImageBank.sharedInstance.smokingYes
+    let smokeNoImage = ImageBank.sharedInstance.smokingNo
+    let blankImage = ImageBank.sharedInstance.blankImage
 
     
     let green = UIColor.greenColor()
@@ -32,8 +40,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableViewT?.dataSource = self
         
         
-//        let navigationBar = navigationController!.navigationBar
-//        navigationBar.tintColor = UIColor.blueColor()
+        tableViewT.registerNib(UINib(nibName: "CustomJournalCell", bundle: nil), forCellReuseIdentifier: "journalCell")
+      
         
         }
 
@@ -52,68 +60,110 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return temp
     }
     
+    //this shouldnt be in here
+    func getJustHoursAndMinutes(date: NSDate)-> String {
+        var hour = 0
+        var minute = 0
+       
+        
+            calendar.getHour(&hour, minute: &minute, second: nil, nanosecond: nil, fromDate: date)
+            print("the hour is \(hour) and minute is \(minute)")
+
+        let retString = "\(hour):\(minute)"
+        
+        return retString
+        
+        
+        //        if #available(iOS 8.0, *) { }
+    
+    }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:"cell")
+//        let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:"cell")
         
-        if dayEvents.count == 0 {
-            cell.textLabel!.text = "No Notes for this Day"
-            cell.imageView!.image = ImageBank.sharedInstance.nothingImage
+//        let cell = tableView.dequeueReusableCellWithIdentifier("journalCell", forIndexPath: indexPath) as! CustomJournalCell
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("journalCell") as! CustomJournalCell
+        
+        if let jEntry = self.dayEvents[indexPath.row] as? JournalEntry{
+            cell.feelingLabel.text = jEntry.feelingOne
+            cell.cravingLabel.text = String(jEntry.cravingRating)
+            cell.timeLabel.text = getJustHoursAndMinutes(jEntry.entryTime)
             
-        }else{
-           
-            //jjgjhgjh
-            if let event = self.dayEvents[indexPath.row] as? JournalEntry {
-            
-            
-            //let event = self.dayEvents[indexPath.row]
-            //print(event.hasNotes)
-            
-            if event.note != "" {
-                cell.detailTextLabel!.text = event.note
-            }else{
-               cell.detailTextLabel!.text = "No Notes"
-            }
-            //cell.detailTextLabel!.text = event.title
-            cell.textLabel!.text = String(event.displayTime)
-            
-            if event.didSmoke == false{
-                cell.imageView!.image = ImageBank.sharedInstance.goodWolfHead
-            } else if event.didSmoke == true{
-                cell.imageView!.image = ImageBank.sharedInstance.badWolfHead
-            }
-            
-            if event.quitDayFlag == true {
-                cell.imageView!.image = ImageBank.sharedInstance.quitDayImage   
-            }
-            switch (event.cravingRating){
-            case (0):
-                cell.backgroundColor = UIColor.whiteColor()
-            case (1):
-                cell.backgroundColor = green.colorWithAlphaComponent(0.5)
-            case (2):
-                cell.backgroundColor = yellow.colorWithAlphaComponent(0.5)
-            case (3):
-                cell.backgroundColor = orange.colorWithAlphaComponent(0.5)
-            case (4):
-                cell.backgroundColor = red.colorWithAlphaComponent(0.5)
-            case (5):
-                cell.backgroundColor = UIColor.redColor()
-            default:
-                cell.backgroundColor = UIColor.cyanColor()
+            cell.didSmokeImage.image = blankImage
+            if let smokeBool = jEntry.didSmoke! as? Bool {
+                if smokeBool{
+                    cell.didSmokeImage.image = smokeYesImage
+                    
+                }else{
+                    cell.didSmokeImage.image = smokeNoImage
+                }
             
             }
-                
-            }
             
-            if let costBenEvent = self.dayEvents[indexPath.row] as? CostBenefitSheetModel {
             
-              cell.textLabel?.text = String(costBenEvent.dateMade)
-            
-            }
+        
         }
+        
+        
+//        if dayEvents.count == 0 {
+//            cell.textLabel!.text = "No Notes for this Day"
+//            cell.imageView!.image = ImageBank.sharedInstance.nothingImage
+//            
+//        }else{
+//           
+//            //jjgjhgjh
+//            if let event = self.dayEvents[indexPath.row] as? JournalEntry {
+//            
+//            
+//            //let event = self.dayEvents[indexPath.row]
+//            //print(event.hasNotes)
+//            
+//            if event.note != "" {
+//                cell.detailTextLabel!.text = event.note
+//            }else{
+//               cell.detailTextLabel!.text = "No Notes"
+//            }
+//            //cell.detailTextLabel!.text = event.title
+//            cell.textLabel!.text = event.feelingOne
+//            
+//            if event.didSmoke == false{
+//                cell.imageView!.image = ImageBank.sharedInstance.goodWolfHead
+//            } else if event.didSmoke == true{
+//                cell.imageView!.image = ImageBank.sharedInstance.badWolfHead
+//            }
+//            
+//            if event.quitDayFlag == true {
+//                cell.imageView!.image = ImageBank.sharedInstance.quitDayImage   
+//            }
+//            switch (event.cravingRating){
+//            case (0):
+//                cell.backgroundColor = UIColor.whiteColor()
+//            case (1):
+//                cell.backgroundColor = green.colorWithAlphaComponent(0.5)
+//            case (2):
+//                cell.backgroundColor = yellow.colorWithAlphaComponent(0.5)
+//            case (3):
+//                cell.backgroundColor = orange.colorWithAlphaComponent(0.5)
+//            case (4):
+//                cell.backgroundColor = red.colorWithAlphaComponent(0.5)
+//            case (5):
+//                cell.backgroundColor = UIColor.redColor()
+//            default:
+//                cell.backgroundColor = UIColor.cyanColor()
+//            
+//            }
+//                
+//            }
+//            
+//            if let costBenEvent = self.dayEvents[indexPath.row] as? CostBenefitSheetModel {
+//            
+//              cell.textLabel?.text = String(costBenEvent.dateMade)
+//            
+//            }
+//        }
         
         return cell
     }

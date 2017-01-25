@@ -10,11 +10,17 @@ import UIKit
 
 class TutorialViewControllerB: UIViewController {
     
+    @IBOutlet weak var okayButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
+    }
+    
+     @IBAction func   okayPressed(sender: UIButton){
+    
+    
     }
 
 }

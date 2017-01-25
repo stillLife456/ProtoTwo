@@ -5,25 +5,31 @@ PODS:
   - CountdownLabel (1.2.0)
   - JTAppleCalendar (4.0.0)
   - KMPlaceholderTextView (1.2.2)
+  - KRWalkThrough (0.9.7)
   - LTMorphingLabel (0.3.0)
   - SwiftyJSON (3.1.1)
+  - SwiftyWalkthrough (0.0.3)
 
 DEPENDENCIES:
   - Charts (= 2.3.0)
   - CountdownLabel
   - JTAppleCalendar (= 4.0.0)
   - KMPlaceholderTextView (~> 1.2.0)
+  - KRWalkThrough (~> 0.9.7)
   - LTMorphingLabel
   - SwiftyJSON
+  - SwiftyWalkthrough
 
 SPEC CHECKSUMS:
   Charts: 55d7fd9af175b500208601bea872f0fc72c1d19e
   CountdownLabel: 7dcc9bb2c8f488af7a4d29053f41c014ea0b973d
   JTAppleCalendar: 65972e6d1039068c46b354d6aadd3da875ae5c7b
   KMPlaceholderTextView: bbff031935d84f7eedb585e7f77120020fbae9e8
+  KRWalkThrough: 1b4629f807e4541de6aebb95b26c69b9b324b090
   LTMorphingLabel: 2777d8d9cb699125f48dfcd95d78bd3d77c87ade
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  SwiftyWalkthrough: 57946c3065a49d63f87a562eb0dc932b94a96d7f
 
-PODFILE CHECKSUM: 475546c6cee5afb6cad5ae7abbeb26ec08bf7388
+PODFILE CHECKSUM: fbb29163215b52dfdea3ce21419b4455d4424b28
 
 COCOAPODS: 1.0.0
