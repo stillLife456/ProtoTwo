@@ -14,10 +14,25 @@ class CustomJournalCell: UITableViewCell {
     @IBOutlet weak var cravingLabel: UILabel!
     @IBOutlet weak var didSmokeImage: UIImageView!
     @IBOutlet weak var disclosureButton: UIButton!
+    
+    // MARK: Constants
+    
+    let bigFont = UIFont(name: "Avenir-Book", size: 17.0)
+    
+    let smallFont = UIFont(name: "Avenir-Light", size: 17.0)
+    
+    let primaryColor = UIColor.blackColor()
+    
+    let secondaryColor = UIColor.lightGrayColor()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        if feelingLabel != nil {
+            feelingLabel?.font = bigFont
+            feelingLabel?.textColor = primaryColor
+        }
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

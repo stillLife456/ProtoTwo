@@ -31,6 +31,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let yellow = UIColor.yellowColor()
     let orange = UIColor.orangeColor()
     
+    let cellId:String = "CustomJournalCell"
+    
     var passIndex = NSIndexPath()
     
     
@@ -40,7 +42,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableViewT?.dataSource = self
         
         
-        tableViewT.registerNib(UINib(nibName: "CustomJournalCell", bundle: nil), forCellReuseIdentifier: "journalCell")
+        tableViewT.registerNib(UINib(nibName: "CustomJournalCell", bundle: nil), forCellReuseIdentifier: "CustomJournalCell")
       
         
         }
@@ -83,9 +85,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
 //        let cell:UITableViewCell = UITableViewCell(style:UITableViewCellStyle.Subtitle, reuseIdentifier:"cell")
         
-//        let cell = tableView.dequeueReusableCellWithIdentifier("journalCell", forIndexPath: indexPath) as! CustomJournalCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CustomJournalCell", forIndexPath: indexPath) as! CustomJournalCell
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("journalCell") as! CustomJournalCell
+//        let cell = tableView.dequeueReusableCellWithIdentifier("CustomJournalCell") as! CustomJournalCell
         
         if let jEntry = self.dayEvents[indexPath.row] as? JournalEntry{
             cell.feelingLabel.text = jEntry.feelingOne
