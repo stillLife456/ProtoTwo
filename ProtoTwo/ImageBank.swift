@@ -24,6 +24,7 @@ class ImageBank {
     var addButton = UIImage()
     var costBen = UIImage()
     var blankImage = UIImage()
+    var shrug = UIImage()
     
     
     let wolfHeadSize = CGSize(width: 20,height: 20)
@@ -48,10 +49,10 @@ class ImageBank {
         if let tempImage5 = UIImage(named:"quitDayImage-Grey"){
             self.quitDayImageGrey  = imageResize(tempImage5, sizeChange: wolfHeadSize)
         }
-        if let tempImage6 = UIImage(named:"smokingYes"){
+        if let tempImage6 = UIImage(named:"yesSmokingClear"){
             self.smokingYes  = imageResize(tempImage6, sizeChange: buttonSize)
         }
-        if let tempImage7 = UIImage(named:"smokingNo"){
+        if let tempImage7 = UIImage(named:"noSmokingClear"){
             self.smokingNo  = imageResize(tempImage7, sizeChange: buttonSize)
         }
         if let tempImage8 = UIImage(named:"addButton"){
@@ -62,7 +63,10 @@ class ImageBank {
         }
         if let tempImage10 = UIImage(named:"blankImage"){
             self.blankImage = imageResize(tempImage10, sizeChange: wolfHeadSize)
-    }
+        }
+        if let tempImage11 = UIImage(named:"shrug"){
+            self.shrug = imageResize(tempImage11, sizeChange: wolfHeadSize)
+        }
     
     }
     func imageResize (image: UIImage, sizeChange:CGSize)-> UIImage{

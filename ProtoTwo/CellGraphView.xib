@@ -44,7 +44,7 @@
                         </label>
                     </subviews>
                 </stackView>
-                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4c-Mj-GZU" customClass="BarChartView" customModule="Charts">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i4c-Mj-GZU" customClass="CellGraphObject" customModule="ProtoTwo">
                     <rect key="frame" x="0.0" y="25" width="73" height="123"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -90,7 +90,7 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="chartView" destination="i4c-Mj-GZU" id="Qnj-KN-3FS"/>
+                <outlet property="chartView" destination="i4c-Mj-GZU" id="FVO-Cn-13m"/>
                 <outlet property="dateLabel" destination="9tT-yF-Abs" id="dXJ-Mb-S7d"/>
                 <outlet property="imageForCell" destination="Fqz-dz-rgE" id="YJG-M9-d8I"/>
             </connections>

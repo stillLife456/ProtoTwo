@@ -12,8 +12,9 @@ import EventKit
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //@IBOutlet weak var tableViewT: UITableView!
     @IBOutlet weak var tableViewT: UITableView!
+
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var dayEvents: [AnyObject] = []
     
@@ -24,6 +25,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let smokeYesImage = ImageBank.sharedInstance.smokingYes
     let smokeNoImage = ImageBank.sharedInstance.smokingNo
     let blankImage = ImageBank.sharedInstance.blankImage
+    let nothingImage = ImageBank.sharedInstance.nothingImage
+    let shrugImage = ImageBank.sharedInstance.shrug
 
     
     let green = UIColor.greenColor()
@@ -43,12 +46,85 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         tableViewT.registerNib(UINib(nibName: "CustomJournalCell", bundle: nil), forCellReuseIdentifier: "CustomJournalCell")
+        
+        if dayEvents.count != 0 {
+        let temp = dayEvents[0] as! JournalEntry
+        let title = getJustDayAndMonth(temp.entryTime)
+      
+        self.navBar.topItem!.title = title
+        }else {
+            self.navBar.topItem!.title = "No Entries on this Day"
+        }
+        
+        //self.navBar.topItem!.title = "Hey Does this Work?"
+        }
+    
+    func getJustDayAndMonth(date: NSDate)-> String {
+        var retString = ""
+        
+        
+        let formatter:NSDateFormatter = NSDateFormatter()
+        let formatterTwo:NSDateFormatter = NSDateFormatter()
+        formatter.dateFormat = "EEEE, MMMM "
+        let tempString = formatter.stringFromDate(date)
+        
+        
+        formatterTwo.dateFormat = "DD"
+        let tempTwo = Int(formatterTwo.stringFromDate(date))
+        let suffixString = addSuffix(toNumber: tempTwo!)
+        
+        
+        
+//        let myComponents = calendar.components(.Weekday, fromDate: date)
+//        let weekDay = String(myComponents.weekday)
       
         
-        }
+        
+        
+        
+        
+        retString = tempString + suffixString
+        
+
+        
+        
+//        calendar.getHour(&hour, minute: &minute, second: nil, nanosecond: nil, fromDate: date)
+//        print("the hour is \(hour) and minute is \(minute)")
+//        
+//        let retString = "\(hour):\(minute)"
+        
+        return retString
+        
+        
+        //        if #available(iOS 8.0, *) { }
+        
+    }
 
     
-
+    //StackOverflow
+    func addSuffix(toNumber number: Int) -> String {
+        var suffix: String
+        let ones: Int = number % 10
+        let tens: Int = (number / 10) % 10
+        if tens == 1 {
+            suffix = "th"
+        }
+        else if ones == 1 {
+            suffix = "st"
+        }
+        else if ones == 2 {
+            suffix = "nd"
+        }
+        else if ones == 3 {
+            suffix = "rd"
+        }
+        else {
+            suffix = "th"
+        }
+        
+        var completeAsString: String = "\(number)\(suffix)"
+        return completeAsString
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         var temp = 0
@@ -88,10 +164,10 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCellWithIdentifier("CustomJournalCell", forIndexPath: indexPath) as! CustomJournalCell
         
 //        let cell = tableView.dequeueReusableCellWithIdentifier("CustomJournalCell") as! CustomJournalCell
-        
+        if dayEvents.count != 0 {
         if let jEntry = self.dayEvents[indexPath.row] as? JournalEntry{
             cell.feelingLabel.text = jEntry.feelingOne
-            cell.cravingLabel.text = String(jEntry.cravingRating)
+            cell.cravingLabel.text = "Craving: \(jEntry.cravingRating)"
             cell.timeLabel.text = getJustHoursAndMinutes(jEntry.entryTime)
             
             cell.didSmokeImage.image = blankImage
@@ -108,64 +184,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         
         }
+        }else{
+            cell.feelingLabel.text = ""
+            cell.cravingLabel.text = ""
+            cell.timeLabel.text = ""
+            cell.didSmokeImage.image = shrugImage
+            cell.disclosureButton.hidden = true
         
-        
-//        if dayEvents.count == 0 {
-//            cell.textLabel!.text = "No Notes for this Day"
-//            cell.imageView!.image = ImageBank.sharedInstance.nothingImage
-//            
-//        }else{
-//           
-//            //jjgjhgjh
-//            if let event = self.dayEvents[indexPath.row] as? JournalEntry {
-//            
-//            
-//            //let event = self.dayEvents[indexPath.row]
-//            //print(event.hasNotes)
-//            
-//            if event.note != "" {
-//                cell.detailTextLabel!.text = event.note
-//            }else{
-//               cell.detailTextLabel!.text = "No Notes"
-//            }
-//            //cell.detailTextLabel!.text = event.title
-//            cell.textLabel!.text = event.feelingOne
-//            
-//            if event.didSmoke == false{
-//                cell.imageView!.image = ImageBank.sharedInstance.goodWolfHead
-//            } else if event.didSmoke == true{
-//                cell.imageView!.image = ImageBank.sharedInstance.badWolfHead
-//            }
-//            
-//            if event.quitDayFlag == true {
-//                cell.imageView!.image = ImageBank.sharedInstance.quitDayImage   
-//            }
-//            switch (event.cravingRating){
-//            case (0):
-//                cell.backgroundColor = UIColor.whiteColor()
-//            case (1):
-//                cell.backgroundColor = green.colorWithAlphaComponent(0.5)
-//            case (2):
-//                cell.backgroundColor = yellow.colorWithAlphaComponent(0.5)
-//            case (3):
-//                cell.backgroundColor = orange.colorWithAlphaComponent(0.5)
-//            case (4):
-//                cell.backgroundColor = red.colorWithAlphaComponent(0.5)
-//            case (5):
-//                cell.backgroundColor = UIColor.redColor()
-//            default:
-//                cell.backgroundColor = UIColor.cyanColor()
-//            
-//            }
-//                
-//            }
-//            
-//            if let costBenEvent = self.dayEvents[indexPath.row] as? CostBenefitSheetModel {
-//            
-//              cell.textLabel?.text = String(costBenEvent.dateMade)
-//            
-//            }
-//        }
+        }
         
         return cell
     }
@@ -178,7 +204,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //print(indexPath.row)
         
         if dayEvents.count != 0 {
-    
+            
         if let event = self.dayEvents[indexPath.row] as? JournalEntry{
         self.performSegueWithIdentifier("ShowJournalDetail", sender: self)
             print("Thought it was event")

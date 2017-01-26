@@ -11,15 +11,19 @@
 import UIKit
 
 
-class IntroSurveyViewController: UIViewController, UITextFieldDelegate {
+class IntroSurveyViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate,
+UINavigationControllerDelegate {
 
     @IBOutlet weak var numSmokesDayInputField: UITextField!
     
     @IBOutlet weak var timeAfterWaking: UITextField!
 
     
+    @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var doneButton: UIButton!
     
+    @IBOutlet var takePhotoButton: UIView!
+    @IBOutlet var choosePhotoButton: UIView!
     let numberToolbar: UIToolbar = UIToolbar()
     
     
@@ -77,6 +81,47 @@ class IntroSurveyViewController: UIViewController, UITextFieldDelegate {
         print(numSmokesDay)
         print(timeSinceWakingSmoke)
        
+//        let imageData = UIImageJPEGRepresentation(imagePicked.image!, 0.6)
+//        let compressedJPGImage = UIImage(data: imageData!)
+//        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
+        
+        let alert = UIAlertView(title: "Wow",
+                                message: "Your image was not saved (Yet.....)",
+                                delegate: nil,
+                                cancelButtonTitle: "Ok")
+        alert.show()
     
     }
+    
+    //Gamera Stuff
+    @IBAction func takePhotoPressed(sender: UIButton) {
+        
+        print("in the funk")
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            print("thing available")
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera;
+            imagePicker.allowsEditing = false
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func choosePhotoPressed(sender: UIButton) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary;
+            imagePicker.allowsEditing = true
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+        imagePicked.image = image
+        self.dismissViewControllerAnimated(true, completion: nil);
+    }
+    
 }

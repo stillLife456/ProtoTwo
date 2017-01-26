@@ -417,7 +417,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
     }
     
-    func formatChartView(chartView: BarChartView) -> BarChartView{
+    func formatChartView(chartView: CellGraphObject) -> CellGraphObject{
     
         //Just dubuggung
         //chartDataSet.colors = ChartColorTemplates.colorful()
@@ -480,6 +480,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             let displayEvents = getJournalEntriesForDay()
             
             //pass stuff over
+            print("Count is: \(displayEvents.count)")
             detailViewController.dayEvents = displayEvents
             
             
@@ -528,28 +529,22 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         
         //maybe this is dumb
         let cellInfo = getCellInfo(date)
-        
         let countArray = cellInfo.0
-        
-      
-        
         myCell.imageForCell.image = cellInfo.1
+
         
-        //Trying to check if there are no journal entries, probably a bad spot
-//        if cellInfo.0 == 0 && cellInfo.1 == 0 {
-//            myCell.imageForCell.hidden = true 
-//        }
+        //Trying to subclass BarChartView to speed up calendar
+        //myCell.chartView.getChartData(xAxis, values: countArray)
+        //let tempBarChart = CellGraphObject(frame: myCell.chartView.frame)
+       
         
+        //Old way, graph is customClass but formating data in Calendar
         myCell.chartView.data = getChartData(xAxis, values: countArray)////////////
-//
-      let tempBarChart = CellGraphObject(frame: myCell.chartView.frame)
-        
         myCell.chartView = formatChartView(myCell.chartView)
         
         // Configure Cell
-        //(cell as! CellView).setupCellBeforeDisplay(cellState, date: date)
         myCell.setupCellBeforeDisplay(cellState, date: date)
-        //myCell.imageForCell.hidden = true
+        
         
     }
     func calendar(calendar: JTAppleCalendarView, didDeselectDate date: NSDate, cell: JTAppleDayCellView?, cellState: CellState) {
