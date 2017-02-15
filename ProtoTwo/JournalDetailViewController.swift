@@ -29,9 +29,9 @@ class JournalDetailViewController: UIViewController, UINavigationControllerDeleg
 //            timeLabel.text = journalEntry.feelingOne
 //        }
         //timeLabel.text = "Check Yourself"
-        let showTime = journalEntry?.displayTime
-        timeLabel.text = showTime
-        print(journalEntry?.displayTime)
+        let showStuff = journalEntry?.note
+        timeLabel.text = showStuff
+       // print(journalEntry?.displayTime)
         
       
       //  printButton.

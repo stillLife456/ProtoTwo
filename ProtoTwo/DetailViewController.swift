@@ -14,12 +14,18 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableViewT: UITableView!
 
-    @IBOutlet weak var navBar: UINavigationBar!
     
+    //@IBOutlet weak var navBar: UINavigationBar!
+ 
+//    @IBOutlet weak var mapButton: UIBarButtonItem!
+//    @IBOutlet weak var backButton: UIBarButtonItem!
+
     var dayEvents: [AnyObject] = []
     
     //this shoudn't be in here
     let calendar = NSCalendar.currentCalendar()
+    
+    let shrug = ImageBank.sharedInstance.shrug
     
     
     let smokeYesImage = ImageBank.sharedInstance.smokingYes
@@ -47,17 +53,65 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableViewT.registerNib(UINib(nibName: "CustomJournalCell", bundle: nil), forCellReuseIdentifier: "CustomJournalCell")
         
+        
+        //Section Header Stuff
+        tableViewT.sectionHeaderHeight = 50
+        tableViewT.registerNib(UINib(nibName: "JournlDetailHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "JournlDetailHeaderView")
+
+        
         if dayEvents.count != 0 {
         let temp = dayEvents[0] as! JournalEntry
         let title = getJustDayAndMonth(temp.entryTime)
-      
-        self.navBar.topItem!.title = title
-        }else {
-            self.navBar.topItem!.title = "No Entries on this Day"
-        }
+          
+            
+          
+            
+            
+            
+            //Nav Bar!!
+            
+            
+            self.title = title
+            
+            let navigationBar = navigationController!.navigationBar
+            navigationBar.tintColor = UIColor.blueColor()
+            
+            let leftButton =  UIBarButtonItem(title: "Left Button", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(backButtonPressed(_:)))
+           
+            let rightButton = UIBarButtonItem(title: "Right Button", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(showMap(_:)))
+            
+            navigationItem.leftBarButtonItem = leftButton
+            leftButton.title = "Back"
+            navigationItem.rightBarButtonItem = rightButton
+            rightButton.title = "Map"
+            
+            //#selector(sayHello(_:)
+            
+            
+//            self.navigationController?.navigationBar.topItem!.title = "Yo"
+//            self.navigationController?.setNavigationBarHidden(false, animated: false)
+//            self.navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem.init(title: "Back", style: UIBarButtonItemStyle(rawValue: 1)!, target: nil, action: Selector.init())
+//            
+//            
+//            
+//            self.navBar.hidden = false
+//      
         
-        //self.navBar.topItem!.title = "Hey Does this Work?"
+            //navBar.
+            
+               // self.navBar.topItem!.title = title
+        }else {
+            //self.navBar.title = "No Entries on this Day"
         }
+
+        //self.navBar.topItem!.title = "Hey Does this Work?"
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+    let startPlace  = tableViewT.frame.origin.x
+        print("Tableview X is : \(startPlace)")
+    }
     
     func getJustDayAndMonth(date: NSDate)-> String {
         var retString = ""
@@ -65,14 +119,14 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let formatter:NSDateFormatter = NSDateFormatter()
         let formatterTwo:NSDateFormatter = NSDateFormatter()
-        formatter.dateFormat = "EEEE, MMMM "
+        formatter.dateFormat = "EE, MMM "
         let tempString = formatter.stringFromDate(date)
         
-        
-        formatterTwo.dateFormat = "DD"
+        print(tempString)
+        formatterTwo.dateFormat = "dd"
         let tempTwo = Int(formatterTwo.stringFromDate(date))
         let suffixString = addSuffix(toNumber: tempTwo!)
-        
+        print(suffixString)
         
         
 //        let myComponents = calendar.components(.Weekday, fromDate: date)
@@ -100,6 +154,17 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
 
+    func showMap (sunder: UIBarButtonItem){
+        print("Mapify")
+        self.performSegueWithIdentifier("showMap", sender: self)
+    }
+    
+    func backButtonPressed(sender: UIBarButtonItem){
+    
+        print("pressy press")
+        self.performSegueWithIdentifier("unwindToCal", sender: self)
+    
+    }
     
     //StackOverflow
     func addSuffix(toNumber number: Int) -> String {
@@ -122,7 +187,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             suffix = "th"
         }
         
-        var completeAsString: String = "\(number)\(suffix)"
+        let completeAsString: String = "\(number)\(suffix)"
         return completeAsString
     }
     
@@ -140,14 +205,27 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //this shouldnt be in here
     func getJustHoursAndMinutes(date: NSDate)-> String {
-        var hour = 0
-        var minute = 0
-       
-        
-            calendar.getHour(&hour, minute: &minute, second: nil, nanosecond: nil, fromDate: date)
-            print("the hour is \(hour) and minute is \(minute)")
 
-        let retString = "\(hour):\(minute)"
+       
+        let formatter:NSDateFormatter = NSDateFormatter()
+        formatter.AMSymbol = "am"
+        formatter.PMSymbol = "pm"
+        
+        formatter.dateFormat = "h"
+        var hourString = formatter.stringFromDate(date)
+        formatter.dateFormat = "mma"
+        let minuteString = formatter.stringFromDate(date)
+        
+        if hourString.characters.count == 1 {
+            hourString = "  " + hourString
+        
+        }
+        
+//            calendar.getHour(&hour, minute: &minute, second: nil, nanosecond: nil, fromDate: date)
+//            print("the hour is \(hour) and minute is \(minute)")
+
+//        let retString = "\(hour):\(minute)"
+            let retString = "\(hourString):\(minuteString)"
         
         return retString
         
@@ -156,6 +234,46 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     }
     
+    func getStringForCravingLabel(cravingRating: Int) -> String{
+        
+        var returnString = ""
+        
+        switch cravingRating {
+            
+        case 0:
+            print("This is crazy")
+        case 1:
+            returnString = "Weak"
+        case 2:
+            returnString = "Mild"
+        case 3:
+            returnString = "Moderate"
+        case 4:
+            returnString = "Strong"
+        case 5:
+            returnString = "Intense"
+        default:
+            print("I'm the guy from the soup kitchen")
+        }
+    
+        return returnString
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+
+    let headerView = tableViewT.dequeueReusableHeaderFooterViewWithIdentifier ("JournlDetailHeaderView") as! JournlDetailHeaderView
+        
+        
+        
+        headerView.layer.borderWidth = 1.0
+        
+        return headerView
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -167,7 +285,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if dayEvents.count != 0 {
         if let jEntry = self.dayEvents[indexPath.row] as? JournalEntry{
             cell.feelingLabel.text = jEntry.feelingOne
-            cell.cravingLabel.text = "Craving: \(jEntry.cravingRating)"
+            cell.cravingLabel.text = getStringForCravingLabel(jEntry.cravingRating)
             cell.timeLabel.text = getJustHoursAndMinutes(jEntry.entryTime)
             
             cell.didSmokeImage.image = blankImage

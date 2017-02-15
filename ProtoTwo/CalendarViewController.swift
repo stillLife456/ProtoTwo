@@ -53,6 +53,16 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     let didNotSmokeColor = UIColor(hue: 0.2917, saturation: 0.4, brightness: 0.85, alpha: 1.0)
     let didSmokeColor = UIColor(hue: 0.9972, saturation: 0.52, brightness: 0.95, alpha: 1.0)
     
+    
+    
+    //Bounds for GPS Dummy Journal Entries
+    let westBoundLong = -123.251653
+    let eastBoundLong =  -122.698312
+    let northBoundLatt = 49.287587
+    let southBoundLatt = 49.148200
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,6 +94,16 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             quitDayLabel.text! = "Your Quitting Day:"
         }
         
+        Journal.sharedInstance.sortArray()
+       //Journal.sharedInstance.printWholeSortedArray()
+        
+        
+//        for i in 0...7 {
+//            let tempLatt = Double(getRandomNum() + 49.14)
+//            let tempLong = Double(getRandomNum() + 122.68) * -1
+//            print("Latt: \(tempLatt)")
+//            print("Long: \(tempLong)")
+//        }
      
     }
     
@@ -126,20 +146,31 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
     func createDummyJournalEntries(){
         
         var i = 0
-        let tempLatt = 39.6482957
-        let tempLong = -123.876598
+//        let tempLatt = 39.6482957
+//        let tempLong = -123.876598
        
+        let tempLatt = Double(getRandomNum() + 49.14)
+        let tempLong = Double(getRandomNum() + 122.68) * -1
+        
         
         while i <= 12 {
             let entryTime = NSDate(timeIntervalSinceNow: NSTimeInterval((86400.0/0.7) * Double(i)))
 
-         let tempEntry = JournalEntry(title: randomStringWithLength(7) as String, entryTime: entryTime, displayTime: formatDate(entryTime), note: randomStringWithLength(7) as String, quitDayFlag: false, cravingRating: ((i%5) + 1), feelingOne: "Great", feelingTwo: "Greater", latt: (tempLatt * (Double(i)/100.0)), long: tempLong * (Double(i)/100.0), didSmoke: Bool(i%6))
+         let tempEntry = JournalEntry(title: randomStringWithLength(7) as String, entryTime: entryTime, displayTime: formatDate(entryTime), note: randomStringWithLength(7) as String, quitDayFlag: false, cravingRating: ((i%5) + 1), feelingOne: "Great", feelingTwo: "Greater", latt: tempLatt, long: tempLong, didSmoke: Bool(i%6))
             Journal.sharedInstance.journalArray.append(tempEntry!)
             Journal.sharedInstance.saveJournalEntries()
             i++
         }
     
     
+    }
+    
+    func getRandomNum()-> Double{
+    
+        var returnNum = Double(arc4random_uniform(1000))
+            returnNum = returnNum/1000.0
+    
+        return returnNum
     }
     
     func writeDummyToPlist(){
@@ -215,7 +246,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
             if e.quitDayFlag && !testCalendar.isDate(e.entryTime as NSDate, inSameDayAsDate : newDate){
                 e.quitDayFlag = false
                 e.title = "Former Quit Day"
-                e.note = "This was the day!"
+                e.note = "This was your quit day!"
             }
         }
         
@@ -223,7 +254,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         let title = "Quit Day"
         let entryTime = newDate
         let displayTime = formatDate(entryTime)
-        let note = "This is the day!"
+        let note = "This is your quit day!"
         let quitDayFlag = true
         let cravingRating = 0
         let feelingOne = ""
@@ -389,75 +420,6 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         return passEvents
     }
     
-    func getChartData(dataPoints: [String], values: [Double]) -> BarChartData{ ////////////
-        
-        var dataEntries: [BarChartDataEntry] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
-            dataEntries.append(dataEntry)
-        }
-        
-        let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "")
-        let chartData = BarChartData(xVals: xAxis, dataSet: chartDataSet)
-        
-        
-        //Formatting?
-        chartData.setDrawValues(false)// Hide chart value numerals on chart
-        
-        
-        chartDataSet.barSpace = 0.1 // percent of view that is space between bars
-       
-        chartDataSet.colors = ChartColorTemplates.colorful()
-        
-        chartDataSet.colors = [didSmokeColor,didNotSmokeColor]
-        
-        return chartData
-        
-        
-    }
-    
-    func formatChartView(chartView: CellGraphObject) -> CellGraphObject{
-    
-        //Just dubuggung
-        //chartDataSet.colors = ChartColorTemplates.colorful()
-        
-        //Chart Layout
-        chartView.rightAxis.spaceBottom = 0.0
-        chartView.rightAxis.spaceTop = 0.0
-        chartView.minOffset = 0
-        chartView.backgroundColor = UIColor.clearColor()
-        
-        //Chart Labels and Values
-        
-        chartView.drawValueAboveBarEnabled = false
-        chartView.leftAxis.drawLabelsEnabled = false
-        chartView.rightAxis.drawLabelsEnabled = false
-        chartView.drawGridBackgroundEnabled = false
-        chartView.xAxis.drawLabelsEnabled = false
-        chartView.descriptionText = ""
-        chartView.legend.enabled = false
-        
-        //Hiding Lines
-        chartView.xAxis.drawGridLinesEnabled = false
-        chartView.drawBordersEnabled = false
-        chartView.leftAxis.drawAxisLineEnabled = false
-        chartView.rightAxis.drawAxisLineEnabled = false
-        chartView.leftAxis.drawGridLinesEnabled = false
-        chartView.rightAxis.drawGridLinesEnabled = false
-        
-        //        self.chartView.leftAxis.calculate(min: 0.0, max: 10.0)
-        //        self.chartView.rightAxis.calculate(min: 0.0, max: 10.0)
-        
-        //Chart Axis Values
-        chartView.leftAxis.axisMinValue = 0
-        chartView.rightAxis.axisMinValue = 0
-        
-        chartView.setScaleEnabled(true)
-    
-        return chartView
-    }
-    
 
 
 
@@ -473,8 +435,7 @@ class CalendarViewController: UIViewController, UIGestureRecognizerDelegate, UIT
         
         if segue.identifier == "Show Detail"{
             
-//            let navVC = segue.destinationViewController as! UINavigationController
-//            let tableVC = navVC.viewControllers.first as! DetailViewController
+
             
             let detailViewController = segue.destinationViewController as! DetailViewController
             let displayEvents = getJournalEntriesForDay()
@@ -536,11 +497,11 @@ extension CalendarViewController: JTAppleCalendarViewDataSource, JTAppleCalendar
         //Trying to subclass BarChartView to speed up calendar
         //myCell.chartView.getChartData(xAxis, values: countArray)
         //let tempBarChart = CellGraphObject(frame: myCell.chartView.frame)
-       
+       //myCell.chartView = formatChartView(myCell.chartView)
         
         //Old way, graph is customClass but formating data in Calendar
-        myCell.chartView.data = getChartData(xAxis, values: countArray)////////////
-        myCell.chartView = formatChartView(myCell.chartView)
+        myCell.chartView.data = myCell.chartView.getChartData(xAxis, values: countArray)
+        myCell.chartView.formatChartView(myCell.chartView)
         
         // Configure Cell
         myCell.setupCellBeforeDisplay(cellState, date: date)

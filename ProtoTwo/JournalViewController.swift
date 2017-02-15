@@ -16,7 +16,7 @@ import SwiftyJSON
 import CoreLocation
 
 
-class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate {
+class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate, UIPickerViewDataSource,UIPickerViewDelegate {
     
     // Outlets
     @IBOutlet weak var noteInputField: KMPlaceholderTextView!
@@ -26,9 +26,17 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var failureButton: UIButton!
     
     
-    @IBOutlet weak var cravingSlider: UISlider!
-    @IBOutlet weak var cravingSliderTextField: UITextField!
-    @IBOutlet weak var cravingLabel: UILabel!
+
+    let pickerData = [["Weak", "Mild","Moderate","Strong","Intense"]]
+    
+    @IBOutlet weak var cravingPicker: UIPickerView!
+    @IBOutlet weak var cravingPickerLabel: UILabel!
+    
+    var cravingInt = 0
+    
+//    @IBOutlet weak var cravingSlider: UISlider!
+//    @IBOutlet weak var cravingSliderTextField: UITextField!
+//    @IBOutlet weak var cravingLabel: UILabel!
     
     
     @IBOutlet weak var feelingFunnelLabel: UILabel!
@@ -96,7 +104,7 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
        // sillyMath()
         
-        cravingSliderTextField.text = "\(Int(cravingSlider.value))"
+        //cravingSliderTextField.text = "\(Int(cravingSlider.value))"
         setUpScrollView()
         
         //Set up Popover
@@ -107,7 +115,41 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
+        cravingPicker.delegate = self
+        cravingPicker.dataSource = self
+        
         //smokingSwitch.
+        
+    }
+    
+    //Craving Picker Delegate
+
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+//        return pickerData.count
+        return 1
+    }
+    
+    func pickerView(pickerView: UIPickerView,numberOfRowsInComponent component: Int) -> Int {
+        //return pickerData[component].count
+        return 5
+    }
+    
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print(pickerData[component][row])
+        return pickerData[component][row]
+        
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        updateLabel()
+    }
+    
+    func updateLabel(){
+       let craving = pickerData[0][cravingPicker.selectedRowInComponent(0)]
+       cravingPickerLabel.text! = craving
+        cravingInt = cravingPicker.selectedRowInComponent(0) + 1
+        print(" \(craving): \(cravingInt)")
         
     }
     
@@ -177,9 +219,14 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
         self.view .addSubview(scrollView)
         scrollView.addSubview(containerView)
-        containerView.addSubview(cravingLabel)
-        containerView.addSubview(cravingSlider)
-        containerView.addSubview(cravingSliderTextField)
+//        containerView.addSubview(cravingLabel)
+//        containerView.addSubview(cravingSlider)
+//        containerView.addSubview(cravingSliderTextField)
+        
+        containerView.addSubview(cravingPicker)
+        containerView.addSubview(cravingPickerLabel)
+        
+        
         containerView.addSubview(feelingFunnelLabel)
         containerView.addSubview(feelingFunnelTextOne)
         //containerView.addSubview(feelingFunnelTextTwo)
@@ -309,6 +356,12 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         }
     }
     
+    func getCravingString(cravingRating: Int)->String{
+    
+    
+    return ""
+    }
+    
     @IBAction func indexChanged(sender : SmokingSegmentedControl) {
         // This all works fine and it prints out the value of 3 on any click
         //print("# of Segments = \(sender.numberOfSegments)")
@@ -334,11 +387,28 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
     
     @IBAction func cravingSliderValueChanged(sender: UISlider){
-        print(cravingSlider.value)
-        //cravingSliderValueLabel.text = String(cravingSlider.value)
-        let currentValue = Int(cravingSlider.value)
-        cravingSliderTextField.text = "\(currentValue)"
-        cravingSlider.value = Float(currentValue)
+//        print(cravingSlider.value)
+//        var switcher = Int(cravingSlider.value)
+//        
+//        switch switcher {
+//        
+//        case 0:
+//            print("This is crazy")
+//        case 1:
+//            cravingSliderTextField.text = "Weak"
+//        case 2:
+//            cravingSliderTextField.text = "Mild"
+//        case 3:
+//            cravingSliderTextField.text = "Moderate"
+//        case 4:
+//            cravingSliderTextField.text = "Strong"
+//        case 5:
+//            cravingSliderTextField.text = "Intense"
+//        default:
+//            print("I'm the guy from the soup kitchen")
+//        }
+//        
+     
         
     }
     
@@ -356,29 +426,42 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         
         print("idhfiwbuf iuwbiwiuvbwiuvi")
         //Custom Journal Stuff
-        var title = noteInputField.text
+        
+//        let imAFool = noteInputField.text == nil
+//        var title = "its true"
+//        print("There's text: \(imAFool)")
+//        if imAFool{
+        let title = noteInputField.text!
+       // }
         var didSmoke = false
         if smokingSwitch.selectedIndex == 1 {
             //title = "success"
             print("success button")
             //journalImage.image = goodWlf
             //wolfWords.text = "Oh Yeah!!"
-            happyBark?.play()
+            //happyBark?.play()
         }else if smokingSwitch.selectedIndex == 0 {
             didSmoke = true
             //title = "failure"
             print("failure button")
 //            journalImage.image = badWlf
 //            wolfWords.text = "Aww.. Geez..."
-            whimper?.play()
+           // whimper?.play()
         }
         let entryTime = NSDate()
         let displayTime = formatDate(entryTime)
+        
+
         let note = noteInputField.text
+
         let quitDayFlag = false
-        let cravingRating = Int(cravingSlider.value)
+        let cravingRating = cravingInt
+        
+
         let feelingOne = feelingFunnelTextOne.text!
+        
         let feelingTwo = "placeHolder" //feelingFunnelTextTwo.text!
+        
         let latt = self.journalLatt
         let long = self.journalLong
         
@@ -386,7 +469,7 @@ class JournalViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         print("Form Journal Creation \(latt)")
         
         let tempEntry = JournalEntry(title: title, entryTime: entryTime, displayTime: displayTime, note: note, quitDayFlag: quitDayFlag, cravingRating: cravingRating, feelingOne: feelingOne, feelingTwo: feelingTwo, latt: latt, long: long, didSmoke: didSmoke)
-        Journal.sharedInstance.journalArray.append(tempEntry!)
+        Journal.sharedInstance.journalArray.append(tempEntry!)//crashes here only note is different but should be hard coded?
         Journal.sharedInstance.saveJournalEntries()
         noteInputField.text = nil
 //        noteInputField.hidden = true

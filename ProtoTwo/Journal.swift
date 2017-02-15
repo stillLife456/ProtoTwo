@@ -17,12 +17,68 @@ class Journal{
     
     //MARK: Properties
     var journalArray = [JournalEntry]()
+    var sortedJournalDict = [String: [ JournalEntry]]()
+    
+    let calendar: NSCalendar! = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)
     
     private init (){
         if let savedJournalEntries = loadJournalEntries() {
             journalArray += savedJournalEntries
+            
+            
         }else {
             print("So confused")
+        }
+    }
+    
+    func getJustDate(date: NSDate)->String{
+    
+        
+        let formatter:NSDateFormatter = NSDateFormatter()
+       
+        formatter.dateFormat = "MM/dd/yyyy "
+        let tempString = formatter.stringFromDate(date)
+        return tempString
+    
+    }
+    
+    
+    func sortArray(){
+        //print("This is sorting the array")
+        
+        for j in journalArray{
+            let date = getJustDate(j.entryTime)
+            
+            let keyExists = sortedJournalDict.indexForKey(date) != nil
+//            print(date)
+//            print ("Does Key exist?: \(keyExists)")
+            if keyExists {
+                sortedJournalDict[date]?.append(j)
+                
+            }else{
+                
+                sortedJournalDict[date] = [j]
+            }
+
+            
+        }
+    
+    
+    
+    }
+    
+    func printWholeSortedArray(){
+        
+       // print("This is printing the array")
+        
+        for (key,value) in sortedJournalDict {
+            
+            //print("\(key)")
+            for i in value {
+                let temp = i as JournalEntry
+               // print("\t\(temp.displayTime)")
+            
+            }
         }
     }
     
@@ -61,7 +117,7 @@ class JournalEntry: NSObject, NSCoding, MKAnnotation{
     var title: String?
     var entryTime: NSDate
     var displayTime: String
-    var note: String
+    var note: String?
     var quitDayFlag: Bool = false
     var cravingRating: Int
     var feelingOne:String?
@@ -110,9 +166,9 @@ class JournalEntry: NSObject, NSCoding, MKAnnotation{
         
         super.init()
         
-        if title.isEmpty {
-            return nil
-        }
+//        if title.isEmpty {
+//            return nil
+//        }
     }
     
     

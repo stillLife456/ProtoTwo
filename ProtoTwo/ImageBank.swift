@@ -31,6 +31,11 @@ class ImageBank {
     let buttonSize = CGSize(width: 80,height: 80)
     let addButtonSize = CGSize(width: 20,height: 20)
     
+    
+    var appPhotoNamesArray = [PhotoName]()
+    //For storing photos
+    var imagesDirectoryPath:String!
+    
 
    private init (){
         
@@ -66,7 +71,56 @@ class ImageBank {
         }
         if let tempImage11 = UIImage(named:"shrug"){
             self.shrug = imageResize(tempImage11, sizeChange: wolfHeadSize)
+            
+            if let tempAppPhotoNamesArray = loadPhotoNames(){
+                print("yeah")
+                appPhotoNamesArray += tempAppPhotoNamesArray
+            }
         }
+    
+    setUpDirectory()
+    
+    }
+    
+    func savePhotoNames() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(appPhotoNamesArray, toFile: PhotoName.ArchiveURL.path!)
+        
+        if !isSuccessfulSave {
+            print("Failed to save photos...")
+        }
+    }
+
+    
+    func loadPhotoNames()-> [PhotoName]?{
+          return NSKeyedUnarchiver.unarchiveObjectWithFile(PhotoName.ArchiveURL.path!) as? [PhotoName]
+        
+    }
+    
+    func setUpDirectory(){
+        
+        //Create/check folder for photos
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        
+        // Get the Document directory path
+        let documentDirectorPath:String = paths[0]
+        
+        // Create a new path for the new images folder
+        imagesDirectoryPath = documentDirectorPath.stringByAppendingString("/FeedTheWolfPhotos")
+        var objcBool:ObjCBool = true
+        let isExist = NSFileManager.defaultManager().fileExistsAtPath(imagesDirectoryPath, isDirectory: &objcBool)
+       
+        // If the folder with the given path doesn't exist already, create it
+        if isExist == false{
+            do{
+                try NSFileManager.defaultManager().createDirectoryAtPath(imagesDirectoryPath, withIntermediateDirectories: true, attributes: nil)
+            }catch{
+                print("Something went wrong while creating a new folder")
+            }
+        }else{
+            print("Image Directory already exists")
+        }
+
+    
     
     }
     func imageResize (image: UIImage, sizeChange:CGSize)-> UIImage{
@@ -80,6 +134,53 @@ class ImageBank {
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         return scaledImage
     }
+    
+
+}
+
+//Custom Object for NSCoding
+
+class PhotoName: NSObject, NSCoding {
+
+    // MARK: Archiving Paths
+    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("allPhotoNames")
+
+    struct PropertyKey {
+        
+        static let photoNameKey = "photoName"
+
+    }
+    
+    //Mark: Properties
+    var photoName: String
+    
+    init? (photoName: String ){
+        self.photoName = photoName
+
+        
+        super.init()
+        
+        //        if title.isEmpty {
+        //            return nil
+        //        }
+    }
+
+    
+    // MARK: NSCoding
+    func  encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(photoName, forKey: PropertyKey.photoNameKey)
+
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let photoName = aDecoder.decodeObjectForKey(PropertyKey.photoNameKey) as! String
+
+        
+        // Must call designated initializer.
+        self.init(photoName: photoName)
+    }
+
     
 
 }

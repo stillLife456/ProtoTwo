@@ -18,6 +18,7 @@ class HelpViewController: UITableViewController {
     @IBOutlet weak var talkButton: UIButton!
     @IBOutlet weak var lookButton: UIButton!
  
+    @IBOutlet weak var photoButton: UIButton!
 
     
 //    @IBAction func doTheThing() {

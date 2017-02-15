@@ -22,9 +22,17 @@ UINavigationControllerDelegate {
     @IBOutlet weak var imagePicked: UIImageView!
     @IBOutlet weak var doneButton: UIButton!
     
+    //For storing photos
+   // var imagesDirectoryPath:String!
+    var images:[UIImage]!
+    var titles:[String]!
+    
     @IBOutlet var takePhotoButton: UIView!
     @IBOutlet var choosePhotoButton: UIView!
     let numberToolbar: UIToolbar = UIToolbar()
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -46,6 +54,23 @@ UINavigationControllerDelegate {
         timeAfterWaking.delegate = self
         numSmokesDayInputField.keyboardType = UIKeyboardType.DecimalPad
         timeAfterWaking.keyboardType = UIKeyboardType.DecimalPad
+        
+//        //Create/check folder for photos
+//        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+//        // Get the Document directory path
+//        let documentDirectorPath:String = paths[0]
+//        // Create a new path for the new images folder
+//        imagesDirectoryPath = documentDirectorPath.stringByAppendingString("/FeedTheWolfPhotos")
+//        var objcBool:ObjCBool = true
+//        let isExist = NSFileManager.defaultManager().fileExistsAtPath(imagesDirectoryPath, isDirectory: &objcBool)
+//        // If the folder with the given path doesn't exist already, create it
+//        if isExist == false{
+//            do{
+//                try NSFileManager.defaultManager().createDirectoryAtPath(imagesDirectoryPath, withIntermediateDirectories: true, attributes: nil)
+//            }catch{
+//                print("Something went wrong while creating a new folder")
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,9 +106,12 @@ UINavigationControllerDelegate {
         print(numSmokesDay)
         print(timeSinceWakingSmoke)
        
-//        let imageData = UIImageJPEGRepresentation(imagePicked.image!, 0.6)
-//        let compressedJPGImage = UIImage(data: imageData!)
-//        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
+        let imageData = UIImageJPEGRepresentation(imagePicked.image!, 0.6)
+        let compressedJPGImage = UIImage(data: imageData!)
+        UIImageWriteToSavedPhotosAlbum(compressedJPGImage!, nil, nil, nil)
+        
+        
+        
         
         let alert = UIAlertView(title: "Wow",
                                 message: "Your image was not saved (Yet.....)",
@@ -121,6 +149,34 @@ UINavigationControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         imagePicked.image = image
+        
+        
+        
+        // Save image to Document directory
+        var imagePath = NSDate().description
+        imagePath = imagePath.stringByReplacingOccurrencesOfString(" ", withString: "")
+        let imagePath2 = ImageBank.sharedInstance.imagesDirectoryPath.stringByAppendingString("/\(imagePath).png")///this is the problem
+       
+        print("ImageName from intro controller: \(imagePath)")
+        print("ImagePath from intro controller: \(imagePath2)")
+        let data = UIImagePNGRepresentation(image)
+        
+     
+        let success = NSFileManager.defaultManager().createFileAtPath(imagePath2, contents: data, attributes: nil)
+        if success{
+            let tempImagePath = PhotoName(photoName: imagePath)
+            ImageBank.sharedInstance.appPhotoNamesArray.append(tempImagePath!)//this should let me get app photos elsewhere
+            ImageBank.sharedInstance.savePhotoNames()
+        }else{
+            print("Warning Photo not stored")
+        }
+        dismissViewControllerAnimated(true) { () -> Void in
+  
+        }
+        
+        
+        
+        
         self.dismissViewControllerAnimated(true, completion: nil);
     }
     

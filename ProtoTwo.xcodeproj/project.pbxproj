@@ -28,11 +28,14 @@
 		F60CB99E1D2751DF00862881 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60CB99D1D2751DF00862881 /* JournalViewController.swift */; };
 		F60E339C1E048C1900F644D6 /* JournalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60E339B1E048C1900F644D6 /* JournalMapViewController.swift */; };
 		F618FB1A1DB024550088521B /* CostBenefitSheetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F618FB191DB024550088521B /* CostBenefitSheetModel.swift */; };
+		F61CE5461E428ECE0000D43F /* JournlDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61CE5451E428ECE0000D43F /* JournlDetailHeaderView.swift */; };
+		F61CE5481E428F450000D43F /* JournlDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F61CE5471E428F450000D43F /* JournlDetailHeaderView.xib */; };
 		F629BF341D7F69B400486873 /* PopDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F629BF331D7F69B400486873 /* PopDatePicker.swift */; };
 		F634A6691DBC0B4100680FD1 /* CostBenefitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634A6681DBC0B4100680FD1 /* CostBenefitCell.swift */; };
 		F634A66B1DBC10FE00680FD1 /* CostBenefitTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F634A66A1DBC10FE00680FD1 /* CostBenefitTableViewController.swift */; };
 		F638AF441DA36B560063BCBB /* feelingList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F638AF431DA36B560063BCBB /* feelingList.plist */; };
 		F638AF461DA3714D0063BCBB /* FeelingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F638AF451DA3714D0063BCBB /* FeelingControl.swift */; };
+		F65D72CD1E40611D00E80E9B /* PhotoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65D72CC1E40611D00E80E9B /* PhotoTableViewController.swift */; };
 		F66239851D44100C00086296 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66239841D44100C00086296 /* Utilities.swift */; };
 		F664898B1DC05CFD001D2314 /* JournalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F664898A1DC05CFD001D2314 /* JournalDetailViewController.swift */; };
 		F669CF911DB4A15300E849DC /* Feeling2CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F669CF901DB4A15300E849DC /* Feeling2CustomCell.swift */; };
@@ -98,6 +101,7 @@
 		F6F34A9A1D42E64A002B8D56 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F34A991D42E64A002B8D56 /* Weekday.swift */; };
 		F6F5001F1DEE348300AE1E5B /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */; };
 		F6F8BA501E36E2B900AB5297 /* CustomWalkthroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F8BA4F1E36E2B900AB5297 /* CustomWalkthroughView.swift */; };
+		F6FA8BD31E4AC68D00794C95 /* JournalPagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FA8BD21E4AC68D00794C95 /* JournalPagesViewController.swift */; };
 		F6FEC7761DB958B0007D4EA5 /* FeelingCellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6FEC7751DB958B0007D4EA5 /* FeelingCellDataModel.swift */; };
 		F8243DB08C28FE928255E02D /* Pods_ProtoTwoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39EFE75CFC42C4DAD5217723 /* Pods_ProtoTwoTests.framework */; };
 /* End PBXBuildFile section */
@@ -153,11 +157,14 @@
 		F60CB99D1D2751DF00862881 /* JournalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		F60E339B1E048C1900F644D6 /* JournalMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalMapViewController.swift; sourceTree = "<group>"; };
 		F618FB191DB024550088521B /* CostBenefitSheetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostBenefitSheetModel.swift; sourceTree = "<group>"; };
+		F61CE5451E428ECE0000D43F /* JournlDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournlDetailHeaderView.swift; sourceTree = "<group>"; };
+		F61CE5471E428F450000D43F /* JournlDetailHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JournlDetailHeaderView.xib; sourceTree = "<group>"; };
 		F629BF331D7F69B400486873 /* PopDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopDatePicker.swift; sourceTree = "<group>"; };
 		F634A6681DBC0B4100680FD1 /* CostBenefitCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostBenefitCell.swift; sourceTree = "<group>"; };
 		F634A66A1DBC10FE00680FD1 /* CostBenefitTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CostBenefitTableViewController.swift; sourceTree = "<group>"; };
 		F638AF431DA36B560063BCBB /* feelingList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = feelingList.plist; sourceTree = "<group>"; };
 		F638AF451DA3714D0063BCBB /* FeelingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeelingControl.swift; sourceTree = "<group>"; };
+		F65D72CC1E40611D00E80E9B /* PhotoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewController.swift; sourceTree = "<group>"; };
 		F66239841D44100C00086296 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		F664898A1DC05CFD001D2314 /* JournalDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalDetailViewController.swift; sourceTree = "<group>"; };
 		F669CF901DB4A15300E849DC /* Feeling2CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feeling2CustomCell.swift; sourceTree = "<group>"; };
@@ -213,6 +220,7 @@
 		F6F34A991D42E64A002B8D56 /* Weekday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		F6F5001E1DEE348300AE1E5B /* PhoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		F6F8BA4F1E36E2B900AB5297 /* CustomWalkthroughView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomWalkthroughView.swift; sourceTree = "<group>"; };
+		F6FA8BD21E4AC68D00794C95 /* JournalPagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalPagesViewController.swift; sourceTree = "<group>"; };
 		F6FEC7751DB958B0007D4EA5 /* FeelingCellDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeelingCellDataModel.swift; sourceTree = "<group>"; };
 		FB38EA44FC24EFE9CBB4CE65 /* Pods_ProtoTwo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProtoTwo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -427,6 +435,7 @@
 				F6B81DAC1D665D6300CB1F9D /* CountdownViewController.swift */,
 				F6B81DA51D66570D00CB1F9D /* HelpViewController.swift */,
 				F6A1557A1E258C08004D61E2 /* ChartsTestViewController.swift */,
+				F65D72CC1E40611D00E80E9B /* PhotoTableViewController.swift */,
 			);
 			name = Help;
 			sourceTree = "<group>";
@@ -450,6 +459,9 @@
 				F6B97C571D76597800F64522 /* PopUpDatePicker.xib */,
 				F6B97C591D765B1600F64522 /* PopUpDatePickerViewController.swift */,
 				F629BF331D7F69B400486873 /* PopDatePicker.swift */,
+				F61CE5451E428ECE0000D43F /* JournlDetailHeaderView.swift */,
+				F61CE5471E428F450000D43F /* JournlDetailHeaderView.xib */,
+				F6FA8BD21E4AC68D00794C95 /* JournalPagesViewController.swift */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -606,6 +618,7 @@
 				F6C0AAD11DA33E1400AFB069 /* FeelingFunnelViewController.xib in Resources */,
 				F6B86A341E24631400A6B161 /* CellGraphView.xib in Resources */,
 				F6B81DAA1D665B0000CB1F9D /* breathe-gif.gif in Resources */,
+				F61CE5481E428F450000D43F /* JournlDetailHeaderView.xib in Resources */,
 				F69F59E31DAAFA7B00CD8625 /* thirdLevelCell.xib in Resources */,
 				F67AF2561D2766A7002901EB /* wolf6.mp3 in Resources */,
 				F69F59DF1DAAFA5600CD8625 /* firstLevelCell.xib in Resources */,
@@ -777,6 +790,7 @@
 				F6FEC7761DB958B0007D4EA5 /* FeelingCellDataModel.swift in Sources */,
 				F66239851D44100C00086296 /* Utilities.swift in Sources */,
 				3E0E7B561D6298EC0069F4BA /* TimeTableViewCell.swift in Sources */,
+				F6FA8BD31E4AC68D00794C95 /* JournalPagesViewController.swift in Sources */,
 				F68E01C41D987E4B00F3909A /* GPSNotificationMapViewController.swift in Sources */,
 				F629BF341D7F69B400486873 /* PopDatePicker.swift in Sources */,
 				F6CA790D1DEF9D4000C5C5FA /* MapOverviewViewController.swift in Sources */,
@@ -812,11 +826,13 @@
 				F67963BF1DBD613900704C0B /* DescriptionAndRating.swift in Sources */,
 				F60CB96D1D2734F900862881 /* AppDelegate.swift in Sources */,
 				F68E01C61D98B23B00F3909A /* SmokingSegmentedControl.swift in Sources */,
+				F61CE5461E428ECE0000D43F /* JournlDetailHeaderView.swift in Sources */,
 				F6BCC13E1E38747E0032FA46 /* CustomJournalCell.swift in Sources */,
 				F67963C11DBD6CE800704C0B /* TotalsCell.swift in Sources */,
 				F6D72EB41D41D71300AEDCF9 /* AnimationClass.swift in Sources */,
 				F664898B1DC05CFD001D2314 /* JournalDetailViewController.swift in Sources */,
 				F6B81DA41D6656D400CB1F9D /* UIImage+Gif.swift in Sources */,
+				F65D72CD1E40611D00E80E9B /* PhotoTableViewController.swift in Sources */,
 				3E0E7B5A1D6299100069F4BA /* TimeAndGPSTableViewCell.swift in Sources */,
 				F6B97C5A1D765B1600F64522 /* PopUpDatePickerViewController.swift in Sources */,
 				F6749E511D696815001C1586 /* CostVsBenefitViewController.swift in Sources */,

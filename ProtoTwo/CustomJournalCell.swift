@@ -32,6 +32,13 @@ class CustomJournalCell: UITableViewCell {
         if feelingLabel != nil {
             feelingLabel?.font = bigFont
             feelingLabel?.textColor = primaryColor
+            
+            timeLabel?.font = bigFont
+            timeLabel?.textColor = primaryColor
+            
+            cravingLabel?.font = smallFont
+            cravingLabel?.textColor = primaryColor
+            
         }
     }
 
